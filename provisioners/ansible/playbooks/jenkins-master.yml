@@ -1,0 +1,46 @@
+---
+- hosts: localhost
+  become: yes
+  become_user: root
+  tasks:
+    - name: install base softwares
+      yum: state=present name={{ item }}
+      with_items:
+        - java
+        - wget
+        - vim
+        - tcpdump
+        - strace
+        - git
+      register: task_result
+      until: task_result is success
+      retries: 10
+      delay: 2
+    - name: Install Jenkins repo key
+      rpm_key: state=present key=https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+    - name: Install Jenkins repo
+      get_url: url=https://pkg.jenkins.io/redhat-stable/jenkins.repo dest=/etc/yum.repos.d/jenkins.repo owner=root group=root mode=0644
+    - name: Install packages
+      yum: name=jenkins state=installed
+      register: task_result
+      until: task_result is success
+      retries: 10
+      delay: 2
+    - name: Set logs to auto start
+      shell: chkconfig awslogs on
+  vars:
+    logs:
+      - file: /var/log/messages
+        format: "%b %d %H:%M:%S"
+        group_name: /var/log/messages
+      - file: /var/log/jenkins/jenkins.log
+        group_name: /var/log/jenkins/jenkins.log
+      - file: /var/log/amazon/ssm/errors.log
+        group_name: /var/log/amazon/ssm/errors.log
+      - file: /var/log/amazon/ssm/amazon-ssm-agent.log
+        group_name: /var/log/amazon/ssm/amazon-ssm-agent.log
+      - file: /var/log/amazon/ssm/hibernate.log
+        group_name: /var/log/amazon/ssm/hibernate.log
+    awslogs_loglevel: info
+  roles:
+    - cloudwatch-logs

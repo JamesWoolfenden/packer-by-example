@@ -1,0 +1,18 @@
+---
+- hosts: localhost
+  become: yes
+  become_user: root
+  vars:
+    logs:
+      - file: /var/log/messages
+        format: "%b %d %H:%M:%S"
+        group_name: /var/log/messages
+      - file: /var/log/nginx/access.log
+        group_name: /var/log/nginx/access.log
+      - file: /var/log/nginx/error.log
+        group_name: /var/log/nginx/error.log
+      - file: /var/log/nginx/nginx-access.log
+        group_name: /var/log/nginx/nginx-access.log
+    awslogs_loglevel: info
+  roles:
+    - cloudwatch-logs

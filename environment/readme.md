@@ -7,6 +7,6 @@ The file template.json is an example file.
 
 ## For AWS
 
- `aws ec2 describe-vpcs`
+`aws ec2 describe-vpcs`
 
- `aws ec2 describe-subnets`
+`aws ec2 describe-subnets`

@@ -1,0 +1,10 @@
+---
+# file: simple-playbook.yml
+
+- hosts: localhost
+
+  roles:
+    - mongodb
+
+  vars:
+    mongodb_version: 3.6.0
