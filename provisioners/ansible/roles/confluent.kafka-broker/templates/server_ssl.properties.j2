@@ -1,0 +1,21 @@
+# Maintained by Ansible
+log.dir={% for logdir in kafka.broker.datadir %}{% if loop.index > 1%},{% endif %}{{ logdir }}{% endfor %}
+
+# SSL Additions
+listeners=SSL://REPLACEMEWITHSED:9093
+security.inter.broker.protocol=SSL
+ssl.truststore.location=/var/ssl/private/kafka.server.truststore.jks
+ssl.truststore.password=UAgBVML7ltDPaKby3Yaqc7NSlO4y5j
+ssl.keystore.location=/var/ssl/private/kafka.server.keystore.jks
+ssl.keystore.password=UAgBVML7ltDPaKby3Yaqc7NSlO4y5j
+ssl.key.password=UAgBVML7ltDPaKby3Yaqc7NSlO4y5j
+confluent.metrics.reporter.security.protocol=SSL
+confluent.metrics.reporter.ssl.truststore.location=/var/ssl/private/kafka.server.truststore.jks
+confluent.metrics.reporter.ssl.truststore.password=UAgBVML7ltDPaKby3Yaqc7NSlO4y5j
+confluent.metrics.reporter.ssl.keystore.location=/var/ssl/private/kafka.server.keystore.jks
+confluent.metrics.reporter.ssl.keystore.password=UAgBVML7ltDPaKby3Yaqc7NSlO4y5j
+confluent.metrics.reporter.ssl.key.password=UAgBVML7ltDPaKby3Yaqc7NSlO4y5j
+
+{% for key, value in kafka.broker.config.items() %}
+{{key}}={{value}}
+{% endfor %}

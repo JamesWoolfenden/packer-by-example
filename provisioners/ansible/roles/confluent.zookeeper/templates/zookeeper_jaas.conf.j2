@@ -1,0 +1,8 @@
+Server {
+    com.sun.security.auth.module.Krb5LoginModule required
+    useKeyTab=true
+    keyTab="/etc/security/keytabs/zookeeper.service.keytab"
+    storeKey=true
+    useTicketCache=false
+    principal="zookeeper/REPLACEMEWITHSED@domain.name";
+};

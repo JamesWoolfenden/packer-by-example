@@ -1,0 +1,5 @@
+---
+oracle_java_url: ""
+oracle_java_rpm: "{{ oracle_java_url.split('/')[8] }}"
+oracle_java_checksum: ""
+java_home: "/usr/java/latest"

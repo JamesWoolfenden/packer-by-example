@@ -1,0 +1,33 @@
+# Maintained by Ansible
+log.dir={% for logdir in kafka.broker.datadir %}{% if loop.index > 1%},{% endif %}{{ logdir }}{% endfor %}
+
+listeners=REPLICATOR://REPLACEMEWITHSED:9093,SASL_SSL://REPLACEMEWITHSED:6668
+listener.security.protocol.map=REPLICATOR:SSL,SASL_SSL:SASL_SSL
+
+confluent.support.metrics.enable=false
+ssl.truststore.location=/var/ssl/private/kafka.server.truststore.jks
+ssl.truststore.password=UAgBVML7ltDPaKby3Yaqc7NSlO4y5j
+ssl.keystore.location=/var/ssl/private/kafka.server.keystore.jks
+ssl.keystore.password=UAgBVML7ltDPaKby3Yaqc7NSlO4y5j
+ssl.key.password=UAgBVML7ltDPaKby3Yaqc7NSlO4y5j
+security.inter.broker.protocol=SASL_SSL
+
+# List of enabled mechanisms, can be more than one
+sasl.enabled.mechanisms=GSSAPI
+
+# Specify one of of the SASL mechanisms
+sasl.mechanism.inter.broker.protocol=GSSAPI
+
+sasl.kerberos.service.name=kafka
+zookeeper.set.acl=true
+
+#authorizer.class.name=kafka.security.auth.SimpleAclAuthorizer
+super.users=User:kafka
+sasl.kerberos.principal.to.local.rules=RULE:[1:@/bin/sh](.*@domain.name)s/@.*//,DEFAULT
+
+ssl.enabled.protocols=TLSv1.2
+
+
+{% for key, value in kafka.broker.config.items() %}
+{{key}}={{value}}
+{% endfor %}

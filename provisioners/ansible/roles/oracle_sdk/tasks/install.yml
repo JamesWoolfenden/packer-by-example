@@ -1,0 +1,24 @@
+---
+- name: Download the Oracle Java RPM file
+  get_url:
+    url: "{{ oracle_java_url }}"
+    dest: "/opt/{{ oracle_java_rpm }}"
+    headers: "Cookie:oraclelicense=accept-securebackup-cookie"
+    checksum: "sha256:{{ oracle_java_checksum }}"
+
+- name: Install Oracle Java
+  yum:
+    name: "/opt/{{ oracle_java_rpm }}"
+    state: present
+
+- name: Put in place JAVA_HOME env variable
+  lineinfile:
+    dest: /etc/profile
+    regexp: "^(export JAVA_HOME=)"
+    state: present
+    line: "export JAVA_HOME={{ java_home }}"
+
+- name: Clean-up Oracle Java RPM file
+  file:
+    path: "/opt/{{ oracle_java_rpm }}"
+    state: absent

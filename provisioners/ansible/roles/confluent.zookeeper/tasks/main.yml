@@ -1,0 +1,102 @@
+---
+- name: Install Kerberos library dependencies
+  yum:
+    name: krb5-workstation
+    state: present
+
+- name: zookeeper create group
+  group:
+    name: "{{ zookeeper.group }}"
+
+- name: zookeeper create user
+  user:
+    name: "{{ zookeeper.user }}"
+    comment: "Zookeeper User"
+    system: yes
+    group: "{{ zookeeper.group }}"
+
+- name: create zookeeper log directory
+  file:
+    path: /var/log/zookeeper
+    state: directory
+    mode: 0755
+    owner: cp-kafka
+    group: confluent
+
+- name: copy systemd service file
+  template:
+    src: zookeeper.service.j2
+    dest: "{{ zookeeper.systemd_config_file }}"
+    owner: root
+    group: root
+    mode: 0644
+
+- name: update the krb5.conf config file
+  template:
+    src: krb5.conf.j2
+    dest: /etc/krb5.conf
+    owner: root
+    group: root
+    mode: 0644
+  when: security_mode == "sasl_ssl"
+
+- name: copy modified start script
+  copy: src=zookeeper-server-start dest="{{ zookeeper.start_class }}"
+
+- name: zookeeper plantext config
+  template:
+    src: zookeeper.properties.j2
+    dest: "{{ zookeeper.config_file }}"
+    mode: 0400
+    owner: "{{ zookeeper.user }}"
+    group: "{{ zookeeper.group }}"
+  when: security_mode == "plaintext"
+
+- name: zookeeper sasl_ssl config
+  template:
+    src: zookeeper_sasl.properties.j2
+    dest: "{{ zookeeper.config_file }}"
+    mode: 0640
+    owner: "{{ zookeeper.user }}"
+    group: "{{ zookeeper.group }}"
+  when: security_mode == "sasl_ssl"
+
+- name: copy log4j config
+  template:
+    src: zookeeper-log4j.properties.j2
+    dest: "{{ zookeeper.log4j_config_file }}"
+    mode: 0640
+    owner: "{{ zookeeper.user }}"
+    group: "{{ zookeeper.group }}"
+
+- name: zookeeper sasl_ssl JAAS config
+  template:
+    src: zookeeper_jaas.conf.j2
+    dest: "{{ zookeeper.jaas_config_file }}"
+    mode: 0640
+    owner: "{{ zookeeper.user }}"
+    group: "{{ zookeeper.group }}"
+  when: security_mode == "sasl_ssl"
+  notify:
+    - restart zookeeper
+
+- name: copy systemd environment file
+  template:
+    src: zookeeper.env.j2
+    dest: "{{ zookeeper.systemd_env_file }}"
+    mode: 0640
+    owner: "{{ zookeeper.user }}"
+    group: "{{ zookeeper.group }}"
+  when: security_mode == "sasl_ssl"
+
+- name: zookeeper configure service
+  systemd:
+    name: "{{ zookeeper.service_name }}"
+    enabled: "{{ zookeeper.systemd.enabled }}"
+    state: "{{ zookeeper.systemd.state }}"
+
+- name: Reload the systemd deamon with changes
+  systemd:
+    daemon_reload: yes
+  notify:
+    - restart zookeeper

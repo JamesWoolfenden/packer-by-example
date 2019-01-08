@@ -1,0 +1,17 @@
+---
+- name: Determine if Oracle Java is installed
+  stat: path={{ java_home }}/bin/java
+  register: java_install_status
+
+- name: Determine version of Oracle Java installed
+  shell: "{{ java_home }}/bin/java -version"
+  register: java_version_output
+  when: java_install_status.stat.exists
+
+- name: Set installed Oracle Java version fact
+  set_fact:
+    installed_oracle_java_version: '{{ java_version_output.stderr | regex_search(".*") }}'
+  when: java_install_status.stat.exists
+
+- include: install.yml
+  when: installed_oracle_java_version is not defined or installed_oracle_java_version != oracle_java_version

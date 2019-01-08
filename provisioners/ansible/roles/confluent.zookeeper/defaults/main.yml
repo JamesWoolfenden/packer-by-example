@@ -1,0 +1,23 @@
+security_mode: sasl_ssl
+zookeeper:
+  user: cp-kafka
+  group: confluent
+  config_file: /etc/kafka/zookeeper.properties
+  log4j_config_file: /etc/kafka/zookeeper-log4j.properties
+  jaas_config_file: /etc/kafka/zookeeper_jaas.conf
+  systemd_env_file: /etc/kafka/zookeeper-env.sh
+  systemd_config_file: /etc/systemd/system/zookeeper.service
+  service_name: zookeeper.service
+  start_class: /bin/zookeeper-server-start
+  config:
+    maxClientCnxns: 0
+    autopurge.snapRetainCount: 10
+    autopurge.purgeInterval: 1
+    dataDir: /var/lib/zookeeper
+    clientPort: 2181
+  environment:
+    KAFKA_HEAP_OPTS: "-Xmx1000M"
+    LOG_DIR: /var/log/zookeeper
+  systemd:
+    enabled: yes
+    state: started

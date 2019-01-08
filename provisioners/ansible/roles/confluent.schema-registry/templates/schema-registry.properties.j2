@@ -1,0 +1,6 @@
+# Maintained by Ansible
+
+listeners=http://0.0.0.0:8081
+{% for key, value in schema.registry.config.items() %}
+{{key}}={{value}}
+{% endfor %}

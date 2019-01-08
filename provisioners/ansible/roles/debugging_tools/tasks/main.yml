@@ -1,0 +1,3 @@
+---
+- include: network.yml
+  when: network_debug_tools

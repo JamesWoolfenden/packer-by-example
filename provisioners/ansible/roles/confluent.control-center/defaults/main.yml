@@ -1,0 +1,22 @@
+security_mode: ssl
+confluent:
+  control:
+    center:
+      user: cp-control-center
+      group: confluent
+      config_file: /etc/confluent-control-center/control-center-production.properties
+      service_name: confluent-control-center
+      config:
+        confluent.controlcenter.rest.port: 8443
+        confluent.controlcenter.internal.topics.partitions: 4
+        confluent.controlcenter.internal.topics.replication: 3
+        confluent.controlcenter.command.topic.replication: 3
+        confluent.monitoring.interceptor.topic.partitions: 4
+        confluent.monitoring.interceptor.topic.replication: 3
+        confluent.metrics.topic.partitions: 4
+        confluent.metrics.topic.replication: 3
+        confluent.controlcenter.streams.num.stream.threads: 8
+        confluent.controlcenter.data.dir: /var/lib/confluent/control-center
+      systemd:
+        enabled: yes
+        state: started

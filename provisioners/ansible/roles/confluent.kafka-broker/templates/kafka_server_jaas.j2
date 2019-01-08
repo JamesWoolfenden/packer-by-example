@@ -1,0 +1,26 @@
+KafkaServer {
+    com.sun.security.auth.module.Krb5LoginModule required
+    useKeyTab=true
+    keyTab="/etc/security/keytabs/kafka.service.keytab"
+    storeKey=true
+    useTicketCache=false
+    principal="kafka/REPLACEMEWITHSED@domain.name";
+};
+
+Client {
+    com.sun.security.auth.module.Krb5LoginModule required
+    useKeyTab=true
+    keyTab="/etc/security/keytabs/kafka.service.keytab"
+    storeKey=true
+    useTicketCache=false
+    principal="kafka/REPLACEMEWITHSED@domain.name";
+};
+
+KafkaClient {
+    com.sun.security.auth.module.Krb5LoginModule required
+    useKeyTab=true
+    keyTab="/etc/security/keytabs/kafka.service.keytab"
+    storeKey=true
+    useTicketCache=false
+    principal="kafka/REPLACEMEWITHSED@domain.name";
+};

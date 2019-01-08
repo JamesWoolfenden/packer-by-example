@@ -1,0 +1,16 @@
+# Maintained by Ansible
+
+#SASL Additions
+sasl.kerberos.service.name=zookeeper
+zookeeper.set.acl=true
+authProvider.1=org.apache.zookeeper.server.auth.SASLAuthenticationProvider
+requireClientAuthScheme=sasl
+
+jaasLoginRenew=3600000
+kerberos.removeHostFromPrincipal=true
+kerberos.removeRealmFromPrincipal=true
+
+
+{% for key, value in zookeeper.config.items() %}
+{{key}}={{value}}
+{% endfor %}

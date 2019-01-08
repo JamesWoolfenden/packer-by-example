@@ -1,0 +1,19 @@
+KafkaClient {
+    com.sun.security.auth.module.Krb5LoginModule required
+    useKeyTab=true
+    keyTab="/etc/security/keytabs/connect.service.keytab"
+    storeKey=true
+    useTicketCache=false
+    serviceName="kafka"
+    principal="connect/REPLACEMEWITHSED@domain.name";
+};
+
+Client {
+    com.sun.security.auth.module.Krb5LoginModule required
+    useKeyTab=true
+    keyTab="/etc/security/keytabs/connect.service.keytab"
+    storeKey=true
+    useTicketCache=false
+    serviceName="kafka"
+    principal="connect/REPLACEMEWITHSED@domain.name";
+};

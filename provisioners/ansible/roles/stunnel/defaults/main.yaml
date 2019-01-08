@@ -1,0 +1,2 @@
+# Location of the Stunnel config file
+stunnel_config_file: /etc/stunnel/stunnel.conf

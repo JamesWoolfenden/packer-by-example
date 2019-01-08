@@ -1,0 +1,23 @@
+- name: create ssl certificate directory
+  file:
+    path: /var/ssl/private
+    state: directory
+    mode: 0755
+- name: pull out cert gen script
+  synchronize:
+    src: scripts/
+    dest: /tmp/scripts
+  delegate_to: localhost
+- name: Changing perm of certs-create, adding "+x"
+  file:
+    dest: /tmp/scripts/certs-create.sh
+    mode: a+x
+  register: out
+- name: create ssl certs
+  command: /tmp/scripts/certs-create.sh
+  args:
+    chdir: /var/ssl/private
+  run_once: true
+  register: out
+- debug: var=out.stdout_lines
+- debug: var=out.stderr_lines

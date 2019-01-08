@@ -1,0 +1,16 @@
+# {{ ansible_managed }}
+# Override of logrotate file https://s3.amazonaws.com/aws-cloudwatch/downloads/latest/awslogs-agent-setup.py
+
+/var/log/awslogs.log {
+    su root root
+    missingok
+    notifempty
+    size 100M
+    create 0600 root root
+    delaycompress
+    compress
+    rotate 4
+    postrotate
+        systemctl restart awslogs.service > /dev/null
+    endscript
+}

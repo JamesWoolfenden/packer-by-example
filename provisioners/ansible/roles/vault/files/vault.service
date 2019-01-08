@@ -1,0 +1,27 @@
+[Unit]
+Description=Vault secret manager
+Documentation=https://vaultproject.io
+After=network-online.target consul.service
+Wants=network-online.target
+
+[Service]
+PrivateDevices=yes
+PrivateTmp=yes
+ProtectSystem=full
+ProtectHome=read-only
+ExecReload=/bin/kill -HUP $MAINPID
+Capabilities=CAP_IPC_LOCK+ep
+CapabilityBoundingSet=CAP_SYSLOG CAP_IPC_LOCK
+NoNewPrivileges=yes
+User=root
+Group=root
+ExecStart=/usr/local/bin/vault server -config=/etc/vault.conf
+KillSignal=SIGINT
+TimeoutStopSec=30s
+Restart=on-failure
+RestartSec=30
+StartLimitInterval=200
+StartLimitBurst=5
+
+[Install]
+WantedBy=multi-user.target

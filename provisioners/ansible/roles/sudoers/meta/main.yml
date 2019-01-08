@@ -1,0 +1,40 @@
+galaxy_info:
+  author:
+    - Tyler Cross
+    - Andrew J. Huffman
+  description: Controls the configuration of the sudoers file and /etc/sudoers.d/ files
+  issue_tracker_url: https://github.com/wtcross/ansible-sudoers/issues
+  license: MIT
+  min_ansible_version: 2.0
+  #github_branch: master
+  platforms:
+    - name: EL
+      versions:
+        - all
+    - name: Fedora
+      versions:
+        - all
+    - name: opensuse
+      versions:
+        - all
+    - name: Amazon
+      versions:
+        - all
+    - name: Ubuntu
+      versions:
+        - all
+    - name: SLES
+      versions:
+        - all
+    - name: Debian
+      versions:
+        - all
+
+  galaxy_tags:
+    - sudo
+    - sudoers
+    - sudoers.d
+    - admin
+    - system
+
+dependencies: []

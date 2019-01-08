@@ -1,0 +1,29 @@
+---
+- name: Install Stunnel
+  become: yes
+  become_user: root
+  yum:
+    name: stunnel
+    state: present
+
+- name: Copying Stunnel Service file
+  copy:
+    src: "{{ role_path }}/files/stunnel.service"
+    dest: /lib/systemd/system/stunnel.service
+
+- name: Start Stunnel at boot time
+  systemd:
+    name: stunnel
+    enabled: yes
+    masked: no
+
+- name: create stunnel directory
+  file:
+    path: /var/run/stunnel
+    state: directory
+
+- name: Stunnel Directory Permissions
+  file:
+    path: /var/run/stunnel
+    state: directory
+    mode: 0755

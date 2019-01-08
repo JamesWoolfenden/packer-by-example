@@ -1,0 +1,32 @@
+- name: "Create /tmp/cloudwatchmetrics"
+  file:
+    path: /tmp/cloudwatchmetrics
+    state: directory
+    mode: 755
+
+- name: Install Unzip
+  yum:
+    name: "unzip"
+    state: present
+
+- name: Unarchive a file that needs to be downloaded
+  unarchive:
+    src: https://s3.amazonaws.com/amazoncloudwatch-agent/linux/amd64/latest/AmazonCloudWatchAgent.zip
+    dest: /tmp/cloudwatchmetrics
+    remote_src: yes
+
+- name: "Install AmazonCloudWatchAgent"
+  shell: /tmp/cloudwatchmetrics/install.sh
+  args:
+    chdir: /tmp/cloudwatchmetrics/
+
+- name: "Cpoy AWS CloudWatch metrics config"
+  template:
+    src: config.json
+    dest: /opt/aws/amazon-cloudwatch-agent/bin/config.json
+    owner: root
+    group: root
+    mode: 0644
+
+- name: "Install AWS CloudWatch metrics configuration"
+  shell: /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -c file:/opt/aws/amazon-cloudwatch-agent/bin/config.json -s

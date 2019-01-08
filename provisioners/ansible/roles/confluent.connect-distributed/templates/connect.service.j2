@@ -1,0 +1,14 @@
+[Unit]
+Description=Connect distributed server
+Documentation=http://confluent.io
+Requires=network.target remote-fs.target
+After=network.target remote-fs.target
+
+[Service]
+Type=simple
+User=cp-kafka-connect
+Group=confluent
+ExecStart=/bin/connect-distributed /etc/kafka/connect-distributed.properties
+
+[Install]
+WantedBy=multi-user.target

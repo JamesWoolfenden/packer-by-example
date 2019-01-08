@@ -1,0 +1,67 @@
+#
+# Based on the logging configuration example from AWS documentation
+# https://docs.aws.amazon.com/fr_fr/AmazonCloudWatch/latest/logs/AgentReference.html
+#
+[loggers]
+keys=root,cwlogs,reader,publisher,event,batch,stream,watcher
+
+[handlers]
+keys=consoleHandler
+
+[formatters]
+keys=simpleFormatter
+
+[logger_root]
+level=INFO
+handlers=consoleHandler
+
+[logger_cwlogs]
+level=INFO
+handlers=consoleHandler
+qualname=cwlogs.push
+propagate=0
+
+[logger_reader]
+level={{ awslogs_loglevel | upper }}
+handlers=consoleHandler
+qualname=cwlogs.push.reader
+propagate=0
+
+[logger_publisher]
+level={{ awslogs_loglevel | upper }}
+handlers=consoleHandler
+qualname=cwlogs.push.publisher
+propagate=0
+
+[logger_event]
+level={{ awslogs_loglevel | upper }}
+handlers=consoleHandler
+qualname=cwlogs.push.event
+propagate=0
+
+[logger_batch]
+level={{ awslogs_loglevel | upper }}
+handlers=consoleHandler
+qualname=cwlogs.push.batch
+propagate=0
+
+[logger_stream]
+level={{ awslogs_loglevel | upper }}
+handlers=consoleHandler
+qualname=cwlogs.push.stream
+propagate=0
+
+[logger_watcher]
+level={{ awslogs_loglevel | upper }}
+handlers=consoleHandler
+qualname=cwlogs.push.watcher
+propagate=0
+
+[handler_consoleHandler]
+class=logging.StreamHandler
+level={{ awslogs_loglevel | upper }}
+formatter=simpleFormatter
+args=(sys.stderr,)
+
+[formatter_simpleFormatter]
+format=%(asctime)s - %(name)s - %(levelname)s - %(process)d - %(threadName)s - %(message)s

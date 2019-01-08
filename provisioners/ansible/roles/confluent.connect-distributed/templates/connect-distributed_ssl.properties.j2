@@ -1,0 +1,36 @@
+
+#SSL additions
+ssl.truststore.location=/var/ssl/private/kafka.client.truststore.jks
+ssl.truststore.password=UAgBVML7ltDPaKby3Yaqc7NSlO4y5j
+ssl.keystore.location=/var/ssl/private/kafka.client.keystore.jks
+ssl.keystore.password=UAgBVML7ltDPaKby3Yaqc7NSlO4y5j
+ssl.key.password=UAgBVML7ltDPaKby3Yaqc7NSlO4y5j
+security.protocol=SSL
+producer.ssl.truststore.location=/var/ssl/private/kafka.client.truststore.jks
+producer.ssl.truststore.password=UAgBVML7ltDPaKby3Yaqc7NSlO4y5j
+producer.ssl.keystore.location=/var/ssl/private/kafka.client.keystore.jks
+producer.ssl.keystore.password=UAgBVML7ltDPaKby3Yaqc7NSlO4y5j
+producer.ssl.key.password=UAgBVML7ltDPaKby3Yaqc7NSlO4y5j
+producer.security.protocol=SSL
+consumer.ssl.truststore.location=/var/ssl/private/kafka.client.truststore.jks
+consumer.ssl.truststore.password=UAgBVML7ltDPaKby3Yaqc7NSlO4y5j
+consumer.ssl.keystore.location=/var/ssl/private/kafka.client.keystore.jks
+consumer.ssl.keystore.password=UAgBVML7ltDPaKby3Yaqc7NSlO4y5j
+consumer.ssl.key.password=UAgBVML7ltDPaKby3Yaqc7NSlO4y5j
+consumer.security.protocol=SSL
+producer.confluent.monitoring.interceptor.ssl.truststore.location=/var/ssl/private/kafka.client.truststore.jks
+producer.confluent.monitoring.interceptor.ssl.truststore.password=UAgBVML7ltDPaKby3Yaqc7NSlO4y5j
+producer.confluent.monitoring.interceptor.ssl.keystore.location=/var/ssl/private/kafka.client.keystore.jks
+producer.confluent.monitoring.interceptor.ssl.keystore.password=UAgBVML7ltDPaKby3Yaqc7NSlO4y5j
+producer.confluent.monitoring.interceptor.ssl.key.password=UAgBVML7ltDPaKby3Yaqc7NSlO4y5j
+producer.confluent.monitoring.interceptor.security.protocol=SSL
+consumer.confluent.monitoring.interceptor.ssl.truststore.location=/var/ssl/private/kafka.client.truststore.jks
+consumer.confluent.monitoring.interceptor.ssl.truststore.password=UAgBVML7ltDPaKby3Yaqc7NSlO4y5j
+consumer.confluent.monitoring.interceptor.ssl.keystore.location=/var/ssl/private/kafka.client.keystore.jks
+consumer.confluent.monitoring.interceptor.ssl.keystore.password=UAgBVML7ltDPaKby3Yaqc7NSlO4y5j
+consumer.confluent.monitoring.interceptor.ssl.key.password=UAgBVML7ltDPaKby3Yaqc7NSlO4y5j
+consumer.confluent.monitoring.interceptor.security.protocol=SSL
+
+{% for key, value in kafka.connect.distributed.config.items() %}
+{{key}}={{value}}
+{% endfor %}

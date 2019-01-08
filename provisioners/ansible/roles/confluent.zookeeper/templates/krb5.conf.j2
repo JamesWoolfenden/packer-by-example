@@ -1,0 +1,39 @@
+# Configuration snippets may be placed in this directory as well
+includedir /etc/krb5.conf.d/
+
+[libdefaults]
+ default_realm = domain.name
+        clockskew       =       300
+        ticket_lifetime =       1d
+        forwardable     =       true
+        proxiable       =       true
+ dns_lookup_realm = true
+ dns_lookup_kdc = false
+
+[realms]
+domain.name = {
+  kdc = 10.142.68.19:88
+  kpasswd_server = 10.142.68.19:464
+}
+
+[domain_realm]
+domain.name.com = domain.name
+.domain.name.com = domain.name
+domain.name = domain.name
+.domain.name = domain.name
+
+[appdefaults]
+        pam = {
+        ticket_lifetime         = 1d
+        renew_lifetime          = 1d
+        forwardable             = true
+        proxiable               = false
+        retain_after_close      = false
+        minimum_uid             = 0
+        debug                   = false
+        }
+
+[logging]
+        default                 = FILE:/var/log/krb5libs.log
+        kdc                     = FILE:/var/log/kdc.log
+        admin_server            = FILE:/var/log/kadmind.log

@@ -1,0 +1,15 @@
+[Unit]
+Description=Apache Zookeeper server
+Documentation=http://zookeeper.apache.org
+Requires=network.target remote-fs.target
+After=network.target remote-fs.target
+
+[Service]
+Type=simple
+User=cp-kafka
+Group=confluent
+ExecStart=/bin/zookeeper-server-start /etc/kafka/zookeeper.properties
+ExecStop=/bin/zookeeper-server-stop
+
+[Install]
+WantedBy=multi-user.target

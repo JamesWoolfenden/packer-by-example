@@ -1,0 +1,21 @@
+
+#SSL additions
+ssl.truststore.location=/var/ssl/private/kafka.client.truststore.jks
+ssl.truststore.password=UAgBVML7ltDPaKby3Yaqc7NSlO4y5j
+ssl.keystore.location=/var/ssl/private/kafka.client.keystore.jks
+ssl.keystore.password=UAgBVML7ltDPaKby3Yaqc7NSlO4y5j
+ssl.key.password=UAgBVML7ltDPaKby3Yaqc7NSlO4y5j
+confluent.controlcenter.streams.ssl.truststore.location=/var/ssl/private/kafka.client.truststore.jks
+confluent.controlcenter.streams.ssl.truststore.password=UAgBVML7ltDPaKby3Yaqc7NSlO4y5j
+confluent.controlcenter.streams.ssl.keystore.location=/var/ssl/private/kafka.client.keystore.jks
+confluent.controlcenter.streams.ssl.keystore.password=UAgBVML7ltDPaKby3Yaqc7NSlO4y5j
+confluent.controlcenter.streams.ssl.key.password=UAgBVML7ltDPaKby3Yaqc7NSlO4y5j
+confluent.controlcenter.rest.ssl.truststore.location=/var/ssl/private/kafka.client.truststore.jks
+confluent.controlcenter.rest.ssl.truststore.password=UAgBVML7ltDPaKby3Yaqc7NSlO4y5j
+confluent.controlcenter.rest.ssl.keystore.location=/var/ssl/private/kafka.client.keystore.jks
+confluent.controlcenter.rest.ssl.keystore.password=UAgBVML7ltDPaKby3Yaqc7NSlO4y5j
+confluent.controlcenter.rest.ssl.key.password=UAgBVML7ltDPaKby3Yaqc7NSlO4y5j
+
+{% for key, value in confluent.control.center.config.items() %}
+{{key}}={{value}}
+{% endfor %}

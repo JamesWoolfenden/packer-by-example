@@ -1,0 +1,34 @@
+security_mode: sasl_ssl
+kafka:
+  connect:
+    distributed:
+      config_file: /etc/kafka/connect-distributed.properties
+      service_name: connect
+      user: cp-kafka-connect
+      group: confluent
+      systemd_config_file: /etc/systemd/system/connect.service
+      systemd_env_file: /etc/kafka/connect-env.sh
+      log4j_config_file: /etc/kafka/connect-log4j.properties
+      start_class: /bin/connect-distributed
+      jaas_config_file: /etc/kafka/connect_jaas.conf
+      config:
+        consumer.interceptor.classes: io.confluent.monitoring.clients.interceptor.MonitoringConsumerInterceptor
+        producer.interceptor.classes: io.confluent.monitoring.clients.interceptor.MonitoringProducerInterceptor
+        config.storage.replication.factor: 3
+        config.storage.topic: connect-configs
+        group.id: connect-cluster
+        internal.key.converter: org.apache.kafka.connect.json.JsonConverter
+        internal.key.converter.schemas.enable: false
+        internal.value.converter: org.apache.kafka.connect.json.JsonConverter
+        internal.value.converter.schemas.enable: false
+        offset.flush.interval.ms: 10000
+        offset.storage.replication.factor: 3
+        offset.storage.topic: connect-offsets
+        status.storage.replication.factor: 3
+        status.storage.topic: connect-status
+        key.converter: io.confluent.connect.avro.AvroConverter
+        value.converter: io.confluent.connect.avro.AvroConverter
+        plugin.path: /usr/share/java
+      systemd:
+        enabled: yes
+        state: started

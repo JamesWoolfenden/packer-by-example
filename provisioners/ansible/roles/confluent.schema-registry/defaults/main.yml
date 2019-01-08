@@ -1,0 +1,18 @@
+security_mode: ssl
+schema:
+  registry:
+    user: cp-schema-registry
+    group: confluent
+    kerberos_kdc_url:
+    config_file: /etc/schema-registry/schema-registry.properties
+    jaas_config_file: /etc/kafka/schema_jaas.conf
+    service_name: confluent-schema-registry
+    config:
+      kafkastore.topic: _schemas
+      debug: false
+    environment:
+      SCHEMA_REGISTRY_HEAP_OPTS: "-Xmx1000M"
+      SCHEMA_REGISTRY_OPTS: "-Djava.security.auth.login.config=/etc/kafka/schema_jaas.conf  -Djavax.security.auth.useSubjectCredsOnly=false"
+    systemd:
+      enabled: yes
+      state: started

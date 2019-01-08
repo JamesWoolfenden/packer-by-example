@@ -1,0 +1,18 @@
+---
+- name: "Get ec2 facts (Debian)."
+  action: ec2_facts
+
+- name: "Update Package Lists (Debian)."
+  apt:
+    update_cache: yes
+
+- name: "Install AWS CloudWatch Logs Agent (Debian)."
+  shell: python /tmp/awslogs-agent-setup.py -n -r {{ ansible_ec2_placement_region }} -c /etc/awslogs/awslogs.conf
+
+- name: "Override /etc/logrotate.d/awslogs"
+  template:
+    src: etc/logrotate.d/awslogs_debian.j2
+    dest: /etc/logrotate.d/awslogs
+    owner: root
+    group: root
+    mode: 0644

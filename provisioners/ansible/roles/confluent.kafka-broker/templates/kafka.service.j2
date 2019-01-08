@@ -1,0 +1,15 @@
+[Unit]
+Description=Apache Kafka server (broker)
+Documentation=http://kafka.apache.org/documentation.html
+Requires=network.target remote-fs.target
+After=network.target remote-fs.target
+
+[Service]
+Type=simple
+User=cp-kafka
+Group=confluent
+ExecStart=/bin/kafka-server-start /etc/kafka/server.properties
+ExecStop=/bin/kafka-server-stop
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,21 @@
+# Maintained by Ansible
+
+listeners=https://0.0.0.0:8082
+schema.registry.inter.instance.protocol=https
+
+#SSL additions
+kafkastore.ssl.truststore.location=/var/ssl/private/kafka.client.truststore.jks
+kafkastore.ssl.truststore.password=UAgBVML7ltDPaKby3Yaqc7NSlO4y5j
+kafkastore.ssl.keystore.location=/var/ssl/private/kafka.client.keystore.jks
+kafkastore.ssl.keystore.password=UAgBVML7ltDPaKby3Yaqc7NSlO4y5j
+kafkastore.ssl.key.password=UAgBVML7ltDPaKby3Yaqc7NSlO4y5j
+
+#SASL additions
+kafkastore.sasl.mechanism=GSSAPI
+sasl.kerberos.service.name=kafka
+kafkastore.security.protocol=SASL_SSL
+security.protocol=SASL_SSL
+
+{% for key, value in schema.registry.config.items() %}
+{{key}}={{value}}
+{% endfor %}

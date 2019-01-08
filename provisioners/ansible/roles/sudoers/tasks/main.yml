@@ -1,0 +1,91 @@
+---
+- name: Ensure sudo is installed
+  package:
+    name: sudo
+    state: present
+
+- name: Ensure the sudoers.d directory is created
+  file:
+    path: /etc/sudoers.d
+    owner: root
+    group: root
+    mode: 0750
+    state: directory
+
+- name: Find all existing separate sudoer specs
+  find:
+    paths: "/etc/sudoers.d"
+    file_type: file
+    recurse: no
+  register: existing_sudoer_spec_list
+
+- name: Get a list of all existing and authorized separate sudoer specs
+  set_fact:
+    existing_sudoer_specs: "{{ existing_sudoer_spec_list.files | map(attribute='path') | map('basename') | list }}"
+    authorized_sudoer_specs: "{{ sudoer_specs | map(attribute='name') | list }}"
+  changed_when: False
+
+- name: Ensure all authorized separate sudoer specs are properly configured
+  template:
+    src: sudoer_spec.j2
+    dest: "/etc/sudoers.d/{{ item.name }}"
+    owner: root
+    group: root
+    mode: 0440
+    validate: "visudo -cf %s"
+  with_items: "{{ sudoer_specs }}"
+  when:
+    - sudoer_separate_specs | bool
+
+- name: Ensure the sudoers file is valid and up to date (separate specs)
+  template:
+    src: sudoers_nospec.j2
+    dest: /etc/sudoers
+    owner: root
+    group: root
+    mode: 0440
+    validate: "visudo -cf %s"
+  when:
+    - sudoer_separate_specs | bool
+    - sudoer_rewrite_sudoers_file | bool
+
+- name: Make sudoers file support seperate specs if not already replaced
+  lineinfile:
+    state: present
+    dest: /etc/sudoers
+    line: "#includedir /etc/sudoers.d"
+    insertafter: EOF
+    backup: yes
+    validate: visudo -cf %s
+  when:
+    - sudoer_separate_specs | bool
+
+- name: Ensure the sudoers file is valid and up to date (specs all in one)
+  template:
+    src: sudoers_plus_spec.j2
+    dest: /etc/sudoers
+    owner: root
+    group: root
+    mode: 0440
+    validate: visudo -cf %s
+  when:
+    - not sudoer_separate_specs | bool
+    - sudoer_rewrite_sudoers_file | bool
+
+- name: Remove separate sudoer specs that are not authorized
+  file:
+    path: "/etc/sudoers.d/{{ item }}"
+    state: absent
+  with_items: "{{ existing_sudoer_specs | difference(authorized_sudoer_specs) }}"
+  when:
+    - sudoer_separate_specs | bool
+    - sudoer_remove_unauthorized_specs | bool
+
+- name: Remove separate sudoer specs if not using separate specs
+  file:
+    path: "/etc/sudoers.d/{{ item }}"
+    state: absent
+  with_items: "{{ existing_sudoer_specs }}"
+  when:
+    - not sudoer_separate_specs | bool
+    - sudoer_remove_unauthorized_specs | bool

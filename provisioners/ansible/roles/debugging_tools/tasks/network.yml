@@ -1,0 +1,30 @@
+---
+- name: install tools needed to debug network issues
+  yum: state=present name={{ item }}
+  with_items:
+    - strace
+    - make
+    - gcc
+    - tcpdump
+
+- name: Download and extract proxychains source
+  unarchive:
+    src: https://github.com/rofl0r/proxychains-ng/releases/download/v4.12/proxychains-ng-4.12.tar.xz
+    dest: /opt
+    remote_src: yes
+    list_files: yes
+  register: proxychains_src
+
+- name: Configure proxychains
+  command: ./configure
+  args:
+    chdir: /opt/{{ proxychains_src.files[0].split('/')[0] }}
+
+- name: Build proxychains
+  make:
+    chdir: /opt/{{ proxychains_src.files[0].split('/')[0] }}
+
+- name: Install proxychains
+  make:
+    target: install
+    chdir: /opt/{{ proxychains_src.files[0].split('/')[0] }}

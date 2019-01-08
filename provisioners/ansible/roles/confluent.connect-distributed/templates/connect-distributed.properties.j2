@@ -1,0 +1,5 @@
+# Maintained by Ansible
+
+{% for key, value in kafka.connect.distributed.config.items() %}
+{{key}}={{value}}
+{% endfor %}

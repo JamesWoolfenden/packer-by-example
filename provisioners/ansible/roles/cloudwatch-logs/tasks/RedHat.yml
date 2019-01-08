@@ -1,0 +1,50 @@
+---
+- name: "Install CloudWatch Log Agent (Amazon)"
+  yum:
+    name: awslogs
+    state: present
+  register: yum_result
+  ignore_errors: true
+
+- block:
+    - name: "Get ec2 facts (RedHat)."
+      action: ec2_metadata_facts
+
+    - name: "Download Install Script (RedHat)."
+      get_url:
+        url: https://s3.amazonaws.com/aws-cloudwatch/downloads/latest/awslogs-agent-setup.py
+        dest: /tmp/awslogs-agent-setup.py
+        mode: 550
+
+    - name: "Create /etc/awslogs (RedHat)."
+      file:
+        path: /etc/awslogs
+        state: directory
+        mode: 755
+
+    - name: "Configure Cloudwatch Log Agent."
+      include: "conf.yml"
+
+    - name: "Install AWS CloudWatch Logs Agent (RedHat)."
+      shell: python /tmp/awslogs-agent-setup.py -n -r {{ ansible_ec2_placement_region }} -c /etc/awslogs/awslogs.conf
+      args:
+        creates: /etc/logrotate.d/awslogs
+
+    - name: "Make symlink for /var/awslogs/etc/awslogs.conf"
+      file:
+        src: /etc/awslogs/awslogs.conf
+        dest: /var/awslogs/etc/awslogs.conf
+        state: link
+        owner: root
+        group: root
+        mode: 0644
+        force: true
+
+    - name: "Override /etc/logrotate.d/awslogs"
+      template:
+        src: etc/logrotate.d/awslogs_redhat.j2
+        dest: /etc/logrotate.d/awslogs
+        owner: root
+        group: root
+        mode: 0644
+  when: "yum_result.failed"

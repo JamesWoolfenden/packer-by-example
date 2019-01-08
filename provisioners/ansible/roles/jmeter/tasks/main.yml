@@ -1,0 +1,16 @@
+---
+- name: Download JMeter installer
+  get_url:
+    url: http://mirrors.ukfast.co.uk/sites/ftp.apache.org//jmeter/source/apache-jmeter-5.0_src.tgz
+    dest: /tmp/apache-jmeter.tgz
+    mode: 0644
+
+- name: Extract .tgz file into directory
+  unarchive:
+    src: /tmp/apache-jmeter.tgz
+    dest: /
+
+- name: Remove Jmeter installer
+  file:
+    state: absent
+    path: /tmp/apache-jmeter.tgz

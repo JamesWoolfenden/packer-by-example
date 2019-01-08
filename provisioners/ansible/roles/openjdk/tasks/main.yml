@@ -1,0 +1,17 @@
+---
+- name: Install OpenJDK
+  yum:
+    name: java-1.8.0-openjdk
+    state: latest
+    update_cache: yes
+  tags: [install, yum]
+
+- name: Check the Java version
+  command: java -version
+  changed_when: false
+  register: java_version
+
+- name: Display the Java version.
+  debug:
+    var: java_version
+    verbosity: 2
