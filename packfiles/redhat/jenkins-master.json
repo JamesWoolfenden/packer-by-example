@@ -8,7 +8,7 @@
   "provisioners": [
     {
       "type": "shell",
-      "script": "provisioners/scripts/install_ansible.sh"
+      "script": "provisioners/scripts/linux/redhat/install_ansible.sh"
     },
     {
       "type": "shell",

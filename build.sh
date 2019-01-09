@@ -25,14 +25,14 @@ do
  esac
 done
 
-#example
-# .\build.sh -environment sandbox -packfile consul-vault
+# example
+# .\build.sh -environment ./environment/sandbox.json -packfile ./packfiles/consul-vault
 echo "packfile:    $packfile"
 echo "environment: $environment"
 
-packer validate -var-file="./environment/${environment}.json" "./packfiles/${packfile}"
+packer validate -var-file="${environment}" "${packfile}"
 if [ "$debug" = "true" ]; then
-    packer build -debug -on-error=ask -var-file="./environment/${environment}.json" "./packfiles/${packfile}"
+    packer build -debug -on-error=ask -var-file="${environment}" "${packfile}"
 else
-    packer build  -var-file="./environment/${environment}.json" "./packfiles/${packfile}"
+    packer build  -var-file="${environment}" "${packfile}"
 fi

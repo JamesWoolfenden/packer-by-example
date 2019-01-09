@@ -6,8 +6,14 @@
     "build_number": "{{env `BUILD_NUMBER`}}"
   },
   "provisioners": [
-    { "type": "shell", "script": "provisioners/scripts/install_ansible.sh" },
-    { "type": "shell", "script": "provisioners/scripts/install_aws_ssm.sh" },
+    {
+      "type": "shell",
+      "script": "provisioners/scripts/linux/redhat/install_ansible.sh"
+    },
+    {
+      "type": "shell",
+      "script": "provisioners/scripts/linux/redhat/install_aws_ssm.sh"
+    },
     {
       "type": "ansible-local",
       "playbook_file": "provisioners/ansible/playbooks/cloudwatch-metrics.yml",

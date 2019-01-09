@@ -11,7 +11,7 @@ function Invoke-Packer
   Get-Function displays the name and syntax of all functions in the session.
 
   .Example
-   .\build.ps1  -packfile .\consul-vault.json -environment jameswoolfenden-sandbox
+   .\build.ps1  -packfile .\packfiles\redhate\base.json -environment .\environmment\jameswoolfenden-sandbox.json
 #>
 
 param(
@@ -20,11 +20,11 @@ param(
   [Parameter(Mandatory=$true)]
   [string]$environment)
 
-   Write-host "Checking .\environment\$environment.json Found: $(test-path .\environment\$environment.json)"
-   Write-host "Checking .\packfiles\$packfile Found: $(test-path .\packfiles\$packfile)"
+   Write-host "Checking $environment Found: $(test-path $environment)"
+   Write-host "Checking $packfile Found: $(test-path $packfile)"
 
-   packer validate -var-file=".\environment\$environment.json" .\packfiles\$packfile
-   packer build -var-file=".\environment\$environment.json" .\packfiles\$packfile
+   packer validate -var-file="$environment" $packfile
+   packer build -var-file="$environment" $packfile
 }
 
 Invoke-Packer -packfile $packfile -environment $environment
