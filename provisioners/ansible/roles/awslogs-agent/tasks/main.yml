@@ -1,0 +1,15 @@
+---
+#install awslog agent on RHEL
+- name: Download the awslogs-agent-setup.py script
+  get_url:
+    dest: /tmp/awslogs-agent-setup.py
+    group: root
+    owner: root
+    mode: 0600
+    url: https://s3.amazonaws.com/aws-cloudwatch/downloads/latest/awslogs-agent-setup.py
+
+- name: create awslog config file
+  copy: src=awslog.conf dest=/tmp/awslog.conf mode=u=rw,g=r,o= owner=root group=root
+
+- name: Install the AWS CloudWatch Logs daemon
+  shell: python /tmp/awslogs-agent-setup.py -n -r eu-west-2 -c /tmp/awslog.conf
