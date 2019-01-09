@@ -1,0 +1,6 @@
+{
+  "instance_type": "t2.micro",
+  "vpc_id": "vpc-x",
+  "subnet_id": "subnet-xxxx",
+  "ami_users": "10101010101,1212121212"
+}
