@@ -11,7 +11,7 @@ function Invoke-Packer
   Get-Function displays the name and syntax of all functions in the session.
 
   .Example
-   .\build.ps1  -packfile .\packfiles\redhate\base.json -environment .\environmment\jameswoolfenden-sandbox.json
+   .\build.ps1  -packfile .\packfiles\redhat\base.json -environment .\environmment\jameswoolfenden-sandbox.json
 #>
 
 param(

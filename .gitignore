@@ -4,3 +4,4 @@ packer_cache/
 # For built boxes
 *.box
 personal*
+aws-230-300-2*

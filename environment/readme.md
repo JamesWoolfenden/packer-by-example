@@ -24,3 +24,9 @@ aws ec2 describe-images \
  Name=root-device-type,Values=ebs \
  --query 'sort_by(Images, &Name)[-1].ImageId' \
  --output text
+
+## Automated Method
+
+### Powershell
+
+run get

@@ -3,5 +3,5 @@
   "vpc_id": "vpc-x",
   "subnet_id": "subnet-xxxx",
   "ami_users": "10101010101,1212121212",
-  "region": ""
+  "aws_region": ""
 }
