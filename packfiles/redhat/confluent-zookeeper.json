@@ -25,7 +25,7 @@
     },
     {
       "type": "shell",
-      "script": "provisioners/scripts/open_confluent_firewall.sh"
+      "script": "provisioners/scripts/linux/redhat/open_confluent_firewall.sh"
     },
     {
       "type": "shell",

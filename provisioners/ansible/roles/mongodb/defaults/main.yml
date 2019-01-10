@@ -1,6 +1,0 @@
----
-#
-# user-configurable defaults
-#
-
-mongodb_version: 3.6 # will install the default (usually the latest stable) version, if not specified.

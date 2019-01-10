@@ -22,11 +22,11 @@
     },
     {
       "type": "shell",
-      "script": "provisioners/scripts/open_confluent_firewall.sh"
+      "script": "provisioners/scripts/linux/redhat/open_confluent_firewall.sh"
     },
     {
       "type": "shell",
-      "script": "provisioners/scripts/install_awscli.sh"
+      "script": "provisioners/scripts/linux/redhat/install_awscli.sh"
     },
     {
       "type": "ansible-local",
