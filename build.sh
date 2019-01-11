@@ -1,4 +1,12 @@
 #!/bin/bash
+#
+# Wraps up Packer with support for environment files and Packer Debug flags
+#
+#
+# To use:
+#
+#      $ build.sh -p .\packfiles\linux\.base.json -e .\environment\myaccount.json -d false
+#
 set -e
 
 usage(){
