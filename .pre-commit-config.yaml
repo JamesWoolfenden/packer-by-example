@@ -36,3 +36,7 @@ repos:
     rev: 1.15.3
     hooks:
       - id: prettier
+  - repo: git://github.com/igorshubovych/markdownlint-cli
+    rev: v0.13.0
+    hooks:
+      - id: markdownlint
