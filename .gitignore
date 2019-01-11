@@ -5,3 +5,4 @@ packer_cache/
 *.box
 personal*
 aws-230-300-2*
+*.orig

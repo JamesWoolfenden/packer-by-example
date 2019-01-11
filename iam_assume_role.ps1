@@ -1,3 +1,17 @@
+<#
+.SYNOPSIS
+    A wrapper script for Assuming different AWS roles, useful for roles and specifically cross account roles.
+.DESCRIPTION
+    Wraps up support for AWS role support
+.PARAMETER Path
+    The path to the .
+.EXAMPLE
+    C:\PS>.\code\bumsonseats\iam_assume_role.ps1 -AccountNo 12121212121 -Role MarcusDogsbody
+.NOTES
+    Author: James Woolfenden
+    Date:   January 10, 2019
+#>
+
 Param(
   [Parameter(Mandatory=$true)]
   [string]$AccountNo,
@@ -16,12 +30,12 @@ function iam_assume_role
      [string]$Role
    )
 
-   write-host "AccountNo: $AccountNo"
-   write-host "Role     : $Role"
+   Write-Host "AccountNo: $AccountNo"
+   Write-Host "Role     : $Role"
 
    $ARN="arn:aws:iam::$($AccountNo):role/$Role"
    Write-Host "ARN      : $ARN"
-   write-host "aws sts assume-role --role-arn $ARN --role-session-name $SESSION_NAME --duration-seconds 3600"
+   Write-Host "aws sts assume-role --role-arn $ARN --role-session-name $SESSION_NAME --duration-seconds 3600"
    $Creds=aws sts assume-role --role-arn $ARN --role-session-name $SESSION_NAME --duration-seconds 3600 |convertfrom-json
 
    [Environment]::SetEnvironmentVariable("AWS_DEFAULT_REGION","eu-west-2")

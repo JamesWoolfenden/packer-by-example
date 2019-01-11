@@ -13,6 +13,7 @@ The file template.json is an example file.
 
 `aws sts get-caller-identity --output text --query 'Account'`
 
+```cli
 $images=aws ec2 describe-images --filter Name="name",Values="CentOS7*"|convertfrom-json
 $images=aws ec2 describe-images --filter Name="ProductCode",Values="aw0evgkw8e5c1q413zgy5pjce"|convertfrom-json
 
@@ -24,9 +25,14 @@ aws ec2 describe-images \
  Name=root-device-type,Values=ebs \
  --query 'sort_by(Images, &Name)[-1].ImageId' \
  --output text
+```
 
 ## Automated Method
 
 ### Powershell
 
-run get
+run.
+
+```Powershell
+.\write-environmentFile.ps1
+```

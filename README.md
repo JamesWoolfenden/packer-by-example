@@ -26,7 +26,7 @@ You can run
 
 ## GCP images
 
-There is an example debian image to run with GCP.
+There is an example Debian image to run with GCP.
 
 ## GCP setup
 

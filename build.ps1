@@ -1,3 +1,17 @@
+<#
+.SYNOPSIS
+    A wrapper script for Packer
+.DESCRIPTION
+    Wraps up Packer with support for environment files and Packer Debug flags
+.PARAMETER Path
+    The path to the .
+.EXAMPLE
+    C:\PS>build.ps1 -packfile .\packfiles\redhat\base.json -environment .\environmment\jameswoolfenden-sandbox.json
+.NOTES
+    Author: James Woolfenden
+    Date:   January 10, 2019
+#>
+
 param(
   [Parameter(Mandatory=$true)]
   [string]$packfile,
@@ -11,7 +25,7 @@ function Invoke-Packer
   Get-Function displays the name and syntax of all functions in the session.
 
   .Example
-   .\build.ps1  -packfile .\packfiles\redhat\base.json -environment .\environmment\jameswoolfenden-sandbox.json
+   Invoke-Packer -packfile .\packfiles\redhat\base.json -environment .\environmment\jameswoolfenden-sandbox.json
 #>
 
 param(
