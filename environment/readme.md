@@ -31,8 +31,8 @@ aws ec2 describe-images \
 
 ### Powershell
 
-run.
+To run to make environment file.
 
 ```Powershell
-.\write-environmentFile.ps1
+.\write-environmentFile.ps1 -BaseName template
 ```

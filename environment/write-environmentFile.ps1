@@ -13,28 +13,52 @@
     Author: James Woolfenden
     Date:   January 10, 2019
 #>
+
+
 Param(
-    [string]$basetemplate="template-aws")
+    [string]$basetemplate = "template-aws",
+    [ValidateSet('AWS','Azure','GCP')]
+    [string]$provider="AWS")
 
-#locally defined and used
-[string]$accountid
-[string]$templatename
-[string]$vpc
-[string]$subnet
+function New-AWSEnvironment {
+    param([string]$basetemplate = "template-aws")
 
-$vpc=aws ec2 describe-vpcs  --output text --query 'Vpcs[0].{VpcId:VpcId}'
-$subnet=aws ec2 describe-subnets --output text --query 'Subnets[0].{SubnetId:SubnetId}'
-$accountid=aws sts get-caller-identity --output text --query 'Account'
+    #locally defined and used
+    [string]$accountid|Out-Null
+    [string]$templatename|Out-Null
+    [string]$vpc|Out-Null
+    [string]$subnet|Out-Null
 
-Write-Host "$(get-date) - Talking to AWS account $accountid"
-$templatename=aws iam list-account-aliases --output text --query 'AccountAliases'
+    $vpc=aws ec2 describe-vpcs  --output text --query 'Vpcs[0].{VpcId:VpcId}'
+    $subnet=aws ec2 describe-subnets --output text --query 'Subnets[0].{SubnetId:SubnetId}'
+    $accountid=aws sts get-caller-identity --output text --query 'Account'
 
-write-host "$(get-date) - imported template .\$basetemplate.json"
-$envtemplate=get-content .\$basetemplate.json|convertfrom-json
-$envtemplate.ami_users=$accountid
-$envtemplate.vpc_id=$vpc
-$envtemplate.subnet_id=$subnet
-$envtemplate.aws_region=aws configure get region
-$envtemplate|ConvertTo-Json| Set-Content -Path ".\$templatename.json"
+    Write-Host "$(get-date) - Talking to AWS account $accountid"
+    $templatename=aws iam list-account-aliases --output text --query 'AccountAliases'
 
-Write-Host "$(get-date) - written .\$templatename.json"
+    write-host "$(get-date) - imported template .\$basetemplate.json"
+    $envtemplate=get-content .\$basetemplate.json|convertfrom-json
+    $envtemplate.ami_users=$accountid
+    $envtemplate.vpc_id=$vpc
+    $envtemplate.subnet_id=$subnet
+    $envtemplate.aws_region=aws configure get region
+    $envtemplate|ConvertTo-Json| Set-Content -Path ".\$templatename.json"
+
+    Write-Host "$(get-date) - written .\$templatename.json"
+}
+
+function New-GCPEnvironment {}
+function New-AzureEnvironment {}
+
+switch ($provider) {
+    AWS {
+        New-AWSEnvironment -basetemplate $basetemplate
+        }
+    GCP {
+        New-GCPEnvironment
+    }
+    Azure {
+        New-AzureEnvironment
+    }
+    Default {}
+}

@@ -1,4 +1,7 @@
-# packer-by-example
+# Packer: By Example
+
+This Repository contains a number of examples for using Packer, with different OS and CloudPlatforms
+<https://aws.amazon.com/blogs/compute/query-for-the-latest-amazon-linux-ami-ids-using-aws-systems-manager-parameter-store/>
 
 ## AWS amis
 
@@ -60,3 +63,5 @@ gcloud services list --available
 gcloud services enable [SERVICE_NAME]
 gcloud services enable Compute Engine API
 ```
+
+## Azure Images
