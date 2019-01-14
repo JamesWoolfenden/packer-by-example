@@ -23,6 +23,13 @@ Param(
 
 function iam_assume_role
 {
+  <#
+  .Description
+  iam_assume_role allows you to run as a different role in a different account
+
+  .Example
+   iam_assume_role -AccountNo $AccountNo -Role SuperAdmin
+#>
    Param(
      [Parameter(Mandatory=$true)]
      [string]$AccountNo,
@@ -30,12 +37,12 @@ function iam_assume_role
      [string]$Role
    )
 
-   Write-Host "AccountNo: $AccountNo"
-   Write-Host "Role     : $Role"
+   Write-Output "AccountNo: $AccountNo"
+   Write-Output "Role     : $Role"
 
    $ARN="arn:aws:iam::$($AccountNo):role/$Role"
-   Write-Host "ARN      : $ARN"
-   Write-Host "aws sts assume-role --role-arn $ARN --role-session-name $SESSION_NAME --duration-seconds 3600"
+   Write-Output "ARN      : $ARN"
+   Write-Output "aws sts assume-role --role-arn $ARN --role-session-name $SESSION_NAME --duration-seconds 3600"
    $Creds=aws sts assume-role --role-arn $ARN --role-session-name $SESSION_NAME --duration-seconds 3600 |convertfrom-json
 
    [Environment]::SetEnvironmentVariable("AWS_DEFAULT_REGION","eu-west-2")

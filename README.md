@@ -48,7 +48,7 @@ Compute Engine API has not been used in project 770172716123 before or it is dis
 Enable it by visiting
  https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=770172716123 then retry.
 If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry, accessNotConfigured
-~~
+
 ## Solution 1 Enable via https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=770172716123
 
 ## Solution 2 Via cli

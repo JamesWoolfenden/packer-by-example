@@ -34,8 +34,8 @@ param(
   [Parameter(Mandatory=$true)]
   [string]$environment)
 
-   Write-host "Checking $environment Found: $(test-path $environment)"
-   Write-host "Checking $packfile Found: $(test-path $packfile)"
+   Write-Output "Checking $environment Found: $(test-path $environment)"
+   Write-Output "Checking $packfile Found: $(test-path $packfile)"
 
    packer validate -var-file="$environment" $packfile
    packer build -var-file="$environment" $packfile
