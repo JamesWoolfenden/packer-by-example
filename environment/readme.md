@@ -1,6 +1,6 @@
 # Environment Folder
 
-The property files here are to populate the packer variables for environment
+The property files here are to populate the packer variables for environment.
 The file template.json is an example file.
 
 ## To populate the environment files
@@ -13,10 +13,19 @@ The file template.json is an example file.
 
 `aws sts get-caller-identity --output text --query 'Account'`
 
-```cli
-$images=aws ec2 describe-images --filter Name="name",Values="CentOS7*"|convertfrom-json
-$images=aws ec2 describe-images --filter Name="ProductCode",Values="aw0evgkw8e5c1q413zgy5pjce"|convertfrom-json
+How do i find the AMI's on which to base my work:
+(<https://aws.amazon.com/blogs/compute/query-for-the-latest-amazon-linux-ami-ids-using-aws-systems-manager-parameter-store/>)
 
+In Powershell
+
+```powershell
+aws ec2 describe-images --filter Name="name",Values="CentOS7*"|convertfrom-json
+aws ec2 describe-images --filter Name="ProductCode",Values="aw0evgkw8e5c1q413zgy5pjce"|convertfrom-json
+```
+
+In Bash
+
+```Bash
 aws ec2 describe-images \
  --owners 679593333241 \
  --filters \
@@ -29,10 +38,16 @@ aws ec2 describe-images \
 
 ## Automated Method
 
-### Powershell
-
 To run to make environment file.
+
+In Powershell
 
 ```Powershell
 .\write-environmentFile.ps1 -BaseName template
+```
+
+In Bash
+
+```Bash
+.\write-environmentFile.sh template
 ```

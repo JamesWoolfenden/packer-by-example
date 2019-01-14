@@ -1,7 +1,6 @@
 # Packer: By Example
 
-This Repository contains a number of examples for using Packer, with different OS and CloudPlatforms
-<https://aws.amazon.com/blogs/compute/query-for-the-latest-amazon-linux-ami-ids-using-aws-systems-manager-parameter-store/>
+This Repository contains a number of examples for using Packer, with different OS and CloudPlatforms.
 
 Instructions for each Cloud provider are here:
 

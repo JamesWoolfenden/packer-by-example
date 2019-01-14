@@ -1,5 +1,7 @@
 # AWS amis
 
+These examples target the customisation of existing AWS Amis, usually from AWS or from trusted sources such as Canonicals AWS account. You can find the details of an AMI from the command line
+
 ## AWS Set-up
 
 You will need to set-up and configured your AWS:
