@@ -1,0 +1,57 @@
+---
+#
+# This is the canonical configuration for the `README.md`
+# Run `make readme` to rebuild the `README.md`
+#
+# Name of this project
+name: packer-by-example
+
+# Logo for this project
+#logo: docs/slalom-logo.png
+
+# License of this project
+license: 'APACHE2'
+
+# Copyrights
+copyrights:
+  - name: 'Slalom, LLC'
+    url: 'https://slalom.com'
+    year: '2019'
+
+# Canonical GitHub repo
+github_repo: JamesWoolfenden/packer-by-example
+
+# Badges to display
+badges:
+  - name: 'Build Status'
+    image: 'https://travis-ci.org/JamesWoolfenden/build-harness.svg?branch=master'
+    url: 'https://travis-ci.org/JamesWoolfenden/build-harness'
+  - name: 'Latest Release'
+    image: 'https://img.shields.io/github/release/JamesWoolfenden/build-harness.svg'
+    url: 'https://github.com/JamesWoolfenden/build-harness/releases/latest'
+
+# Short description of this project
+description: |-
+  Packer-by-example is a collection of Scripts, Ansible, Makefiles and Packer files to building images in the Public Cloud.
+  It's designed to work with CI/CD systems such as Travis CI, CircleCI and Jenkins, or even at your console.
+
+# Introduction to the project
+introduction: |-
+#  This is an introduction.
+# How to use this project
+usage: |-
+  some usage info...
+# How to get started quickly
+quickstart: |-
+  Here's how to get started...
+  1. `git clone https://github.com/jameswoolfenden/build-harness.git` to pull down the repository
+  2. `make init` to initialize the [`build-harness`](https://github.com/jameswoolfenden/build-harness/)
+# Other files to include in this README from the project folder
+include:
+  - 'docs/instructions.md'
+  - 'docs/targets.md'
+
+# Contributors to this project
+contributors:
+  - name: 'James Woolfenden'
+    github: 'jameswoolfenden'

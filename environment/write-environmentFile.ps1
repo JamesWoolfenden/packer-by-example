@@ -33,10 +33,10 @@ function New-AWSEnvironment {
     $subnet=aws ec2 describe-subnets --output text --query 'Subnets[0].{SubnetId:SubnetId}'
     $accountid=aws sts get-caller-identity --output text --query 'Account'
 
-    Write-Host "$(get-date) - Talking to AWS account $accountid"
+    Write-Output "$(get-date) - Talking to AWS account $accountid"
     $templatename=aws iam list-account-aliases --output text --query 'AccountAliases'
 
-    write-host "$(get-date) - imported template .\$basetemplate.json"
+    Write-Output "$(get-date) - imported template .\$basetemplate.json"
     $envtemplate=get-content .\$basetemplate.json|convertfrom-json
     $envtemplate.ami_users=$accountid
     $envtemplate.vpc_id=$vpc
@@ -44,7 +44,7 @@ function New-AWSEnvironment {
     $envtemplate.aws_region=aws configure get region
     $envtemplate|ConvertTo-Json| Set-Content -Path ".\$templatename.json"
 
-    Write-Host "$(get-date) - written .\$templatename.json"
+    Write-Output "$(get-date) - written .\$templatename.json"
 }
 
 function New-GCPEnvironment {}

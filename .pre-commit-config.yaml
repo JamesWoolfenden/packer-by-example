@@ -32,10 +32,6 @@ repos:
     rev: v4.0.1
     hooks:
       - id: ansible-lint
-  - repo: https://github.com/prettier/prettier
-    rev: 1.15.3
-    hooks:
-      - id: prettier
   - repo: git://github.com/igorshubovych/markdownlint-cli
     rev: v0.13.0
     hooks:
