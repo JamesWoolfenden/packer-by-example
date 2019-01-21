@@ -24,11 +24,11 @@ github_repo: JamesWoolfenden/packer-by-example
 # Badges to display
 badges:
   - name: 'Build Status'
-    image: 'https://travis-ci.org/JamesWoolfenden/build-harness.svg?branch=master'
-    url: 'https://travis-ci.org/JamesWoolfenden/build-harness'
+    image: 'https://travis-ci.org/JamesWoolfenden/packer-by-example.svg?branch=master'
+    url: 'https://travis-ci.org/JamesWoolfenden/packer-by-example'
   - name: 'Latest Release'
-    image: 'https://img.shields.io/github/release/JamesWoolfenden/build-harness.svg'
-    url: 'https://github.com/JamesWoolfenden/build-harness/releases/latest'
+    image: 'https://img.shields.io/github/release/JamesWoolfenden/packer-by-example.svg'
+    url: 'https://github.com/JamesWoolfenden/packer-by-example/releases/latest'
 
 # Short description of this project
 description: |-
@@ -44,8 +44,9 @@ usage: |-
 # How to get started quickly
 quickstart: |-
   Here's how to get started...
-  1. `git clone https://github.com/jameswoolfenden/build-harness.git` to pull down the repository
-  2. `make init` to initialize the [`build-harness`](https://github.com/jameswoolfenden/build-harness/)
+  1. `git clone https://github.com/jameswoolfenden/packer-by-example.git` to pull down the repository
+  2. `make packer/install` to get the tool.
+  3. And test drive with `make packer/validate`.
 # Other files to include in this README from the project folder
 include:
   - 'docs/instructions.md'
