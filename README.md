@@ -2,7 +2,7 @@
 
 [![Slalom][logo]](https://slalom.com)
 
-# packer-by-example [![Build Status](https://travis-ci.org/JamesWoolfenden/build-harness.svg?branch=master)](https://travis-ci.org/JamesWoolfenden/build-harness) [![Latest Release](https://img.shields.io/github/release/JamesWoolfenden/build-harness.svg)](https://github.com/JamesWoolfenden/build-harness/releases/latest)
+# packer-by-example [![Build Status](https://travis-ci.org/JamesWoolfenden/packer-by-example.svg?branch=master)](https://travis-ci.org/JamesWoolfenden/packer-by-example) [![Latest Release](https://img.shields.io/github/release/JamesWoolfenden/packer-by-example.svg)](https://github.com/JamesWoolfenden/packer-by-example/releases/latest)
 
 
 Packer-by-example is a collection of Scripts, Ansible, Makefiles and Packer files to building images in the Public Cloud.
@@ -36,8 +36,9 @@ some usage info...
 ## Quick Start
 
 Here's how to get started...
-1. `git clone https://github.com/jameswoolfenden/build-harness.git` to pull down the repository
-2. `make init` to initialize the [`build-harness`](https://github.com/jameswoolfenden/build-harness/)
+1. `git clone https://github.com/jameswoolfenden/packer-by-example.git` to pull down the repository
+2. `make packer/install` to get the tool.
+3. And test drive with `make packer/validate`.
 
 
 
