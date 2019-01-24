@@ -2,32 +2,19 @@
 
 [![Slalom][logo]](https://slalom.com)
 
-# packer-by-example [![Build Status](https://travis-ci.org/JamesWoolfenden/packer-by-example.svg?branch=master)](https://travis-ci.org/JamesWoolfenden/packer-by-example) [![Latest Release](https://img.shields.io/github/release/JamesWoolfenden/packer-by-example.svg)](https://github.com/JamesWoolfenden/packer-by-example/releases/latest)
+# packer-by-example [![Build Status](https://travis-ci.com/JamesWoolfenden/packer-by-example.svg?branch=master)](https://travis-ci.org/JamesWoolfenden/packer-by-example) [![Latest Release](https://img.shields.io/github/release/JamesWoolfenden/packer-by-example.svg)](https://github.com/JamesWoolfenden/packer-by-example/releases/latest)
 
 
 Packer-by-example is a collection of Scripts, Ansible, Makefiles and Packer files to building images in the Public Cloud.
 It's designed to work with CI/CD systems such as Travis CI, CircleCI and Jenkins, or even at your console.
 
-
 ---
 
 This project uses the "build-harness" a modified version of the project ["SweetOps"](https://cpco.io/sweetops) from Cloudposse. Sweet indeed.
 
-
 It's 100% Open Source and licensed under the [APACHE2](LICENSE).
 
-
-
-
-
-
-
-
-
 ## Introduction
-
-
-
 
 ## Usage
 
@@ -40,9 +27,6 @@ Here's how to get started...
 2. `make packer/install` to get the tool.
 3. And test drive with `make packer/validate`.
 
-
-
-
 This Repository contains a number of examples for using Packer, with different OS and CloudPlatforms.
 
 Instructions for each Cloud provider are here:
@@ -53,19 +37,6 @@ Instructions for each Cloud provider are here:
 
 There are several different OS examples, Windows and Linux, and different versions of each.
 The "packfiles" have examples of using basic features of scipts or Ansible to configure your images, aw well versioning the AMI's.
-## Makefile Targets
-```
-Available targets:
-
-  help/all:                          Display help for all targets
-  help/short:                        This help short screen
-  help:                              Help screen
-  lint                                Lint terraform code
-
-```
-
-
-
 
 ## Help
 
@@ -73,27 +44,15 @@ Available targets:
 
 File a GitHub [issue](https://github.com/JamesWoolfenden/packer-by-example/issues).
 
-
-## Slack Community
-
-You can join the Cloudposse community [Open Source Community][slack] on Slack.
-
 ## Contributing
 
 ### Bug Reports & Feature Requests
 
 Please use the [issue tracker](https://github.com/JamesWoolfenden/packer-by-example/issues) to report any bugs or file feature requests.
 
-
-
 ## Copyrights
 
 Copyright © 2019-2019 [Slalom, LLC](https://slalom.com)
-
-
-
-
-
 
 ## License
 
@@ -118,31 +77,19 @@ See [LICENSE](LICENSE) for full details.
     specific language governing permissions and limitations
     under the License.
 
-
-
-
-
-
-
-
-
-
-
-
 ### Contributors
 
-|  [![James Woolfenden][jameswoolfenden_avatar]][jameswoolfenden_homepage]<br/>[James Woolfenden][jameswoolfenden_homepage] |
-|---|
+  [![James Woolfenden][jameswoolfenden_avatar]][jameswoolfenden_homepage]<br/>[James Woolfenden][jameswoolfenden_homepage] |
+
 
   [jameswoolfenden_homepage]: https://github.com/jameswoolfenden
   [jameswoolfenden_avatar]: https://github.com/jameswoolfenden.png?size=150
 
 
 
-[logo]: docs/slalom-logo.png
+[logo]: https://gist.githubusercontent.com/JamesWoolfenden/5c457434351e9fe732ca22b78fdd7d5e/raw/15933294ae2b00f5dba6557d2be88f4b4da21201/slalom-logo.png
 [website]: https://slalom.com
 [github]: https://github.com/jameswoolfenden
-[slack]: https://cpco.io/slack
 [linkedin]: https://www.linkedin.com/company/slalom-consulting/
 [twitter]: https://twitter.com/Slalom
 
