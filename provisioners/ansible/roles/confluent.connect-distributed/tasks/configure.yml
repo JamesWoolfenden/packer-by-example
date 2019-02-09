@@ -35,7 +35,9 @@
     mode: 0644
 
 - name: copy modified connect script
-  copy: src=connect-distributed dest="{{ kafka.connect.distributed.start_class }}"
+  copy:
+    src: connect-distributed
+    dest: "{{ kafka.connect.distributed.start_class }}"
 
 - name: copy systemd environment file
   template:

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-cd /tmp
+cd /tmp || exit
 # Install EPEL repository.
 sudo yum update -y
 #sudo subscription-manager repos --enable "rhel-*-optional-rpms" --enable "rhel-*-extras-rpms"

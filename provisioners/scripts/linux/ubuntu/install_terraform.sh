@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-cd /tmp/
+cd /tmp/ || exit
 VERSION="0.11.11"
 sudo apt install -y zip unzip
 wget "https://releases.hashicorp.com/terraform/$VERSION/terraform_${VERSION}_linux_amd64.zip"

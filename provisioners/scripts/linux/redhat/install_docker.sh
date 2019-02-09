@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-cd /tmp/
+cd /tmp/ || exit
 # pre-requisite for container-selinux-2.9-4.el7.noarch.rpm
 sudo yum install policycoreutils-python
 
