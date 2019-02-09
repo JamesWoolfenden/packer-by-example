@@ -1,7 +1,6 @@
 #Makefile
-AWS_DEFAULT_REGION ?= "eu-west-1"
-PACKFILE ?= "base.json"
-ENVIRONMENT ?= "management-<account-number>"
+PACKFILE ?= "packfiles/base.json"
+ENVIRONMENT ?= "environment/management-<account-number>"
 
 .PHONY: base
 

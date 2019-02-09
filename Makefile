@@ -10,5 +10,8 @@ export README_DEPS ?= docs/targets.md docs/terraform.md
 -include $(shell curl -sSL -o .build-harness "https://raw.githubusercontent.com/JamesWoolfenden/build-harness/master/templates/Makefile.build-harness"; echo .build-harness)
 
 ## Lint terraform code
-lint:
-	$(SELF) terraform/install terraform/get-modules terraform/get-plugins terraform/lint terraform/validate
+lint:	$(SELF) terraform/install terraform/get-modules terraform/get-plugins terraform/lint terraform/validate
+
+## test
+validate:
+	packer validate -var-file="./environment/slalom-azure.json" ./packfiles/Ubuntu/base-azure.json
