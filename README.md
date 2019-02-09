@@ -2,8 +2,7 @@
 
 [![Slalom][logo]](https://slalom.com)
 
-# packer-by-example [![Build Status](https://travis-ci.com/JamesWoolfenden/packer-by-example.svg?branch=master)](https://travis-ci.org/JamesWoolfenden/packer-by-example) [![Latest Release](https://img.shields.io/github/release/JamesWoolfenden/packer-by-example.svg)](https://github.com/JamesWoolfenden/packer-by-example/releases/latest)
-
+# packer-by-example [![Build Status](https://travis-ci.com/JamesWoolfenden/packer-by-example.svg?branch=master)](https://travis-ci.com/JamesWoolfenden/packer-by-example) [![Latest Release](https://img.shields.io/github/release/JamesWoolfenden/packer-by-example.svg)](https://github.com/JamesWoolfenden/packer-by-example/releases/latest)
 
 Packer-by-example is a collection of Scripts, Ansible, Makefiles and Packer files to building images in the Public Cloud.
 It's designed to work with CI/CD systems such as Travis CI, CircleCI and Jenkins, or even at your console.
@@ -23,8 +22,11 @@ some usage info...
 ## Quick Start
 
 Here's how to get started...
+
 1. `git clone https://github.com/jameswoolfenden/packer-by-example.git` to pull down the repository
+
 2. `make packer/install` to get the tool.
+
 3. And test drive with `make packer/validate`.
 
 This Repository contains a number of examples for using Packer, with different OS and CloudPlatforms.
@@ -36,7 +38,7 @@ Instructions for each Cloud provider are here:
 - [AZURE](docs/AZURE.MD)
 
 There are several different OS examples, Windows and Linux, and different versions of each.
-The "packfiles" have examples of using basic features of scipts or Ansible to configure your images, aw well versioning the AMI's.
+The "packfiles" have examples of using basic features of scripts or Ansible to configure your images, aw well versioning the AMI's.
 
 ## Help
 
@@ -81,11 +83,8 @@ See [LICENSE](LICENSE) for full details.
 
   [![James Woolfenden][jameswoolfenden_avatar]][jameswoolfenden_homepage]<br/>[James Woolfenden][jameswoolfenden_homepage] |
 
-
   [jameswoolfenden_homepage]: https://github.com/jameswoolfenden
   [jameswoolfenden_avatar]: https://github.com/jameswoolfenden.png?size=150
-
-
 
 [logo]: https://gist.githubusercontent.com/JamesWoolfenden/5c457434351e9fe732ca22b78fdd7d5e/raw/15933294ae2b00f5dba6557d2be88f4b4da21201/slalom-logo.png
 [website]: https://slalom.com
