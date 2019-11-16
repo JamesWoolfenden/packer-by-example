@@ -223,5 +223,5 @@ defaults: string|[string]
 
 ## Author Information
 
-[Tyler Cross](https://github.com/wtcross)
+[Tyler Cross](https://github.com/wtcross)
 [Andrew J. Huffman](https://github.com/ahuffman)

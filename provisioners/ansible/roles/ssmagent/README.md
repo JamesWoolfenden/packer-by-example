@@ -1,7 +1,7 @@
 # dhoeric.aws-ssm
 
-[![Build Status](https://travis-ci.org/dhoeric/ansible-aws-ssm.svg?branch=master)](https://travis-ci.org/dhoeric/ansible-aws-ssm)
-[![Ansible Role](https://img.shields.io/ansible/role/17714.svg)](https://galaxy.ansible.com/dhoeric/aws-ssm/)
+[![Build Status](https://travis-ci.org/dhoeric/ansible-aws-ssm.svg?branch=master)](https://travis-ci.org/dhoeric/ansible-aws-ssm)
+[![Ansible Role](https://img.shields.io/ansible/role/17714.svg)](https://galaxy.ansible.com/dhoeric/aws-ssm/)
 [![Ansible Role](https://img.shields.io/ansible/role/d/17714.svg)](https://galaxy.ansible.com/dhoeric/aws-ssm/)
 
 Install AWS EC2 Systems Manager (SSM) agent
