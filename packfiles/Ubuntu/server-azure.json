@@ -1,36 +1,36 @@
 {
-    "builders": [
-        {
-            "type": "azure-arm",
-            "client_id": "f5b6a5cf-fbdf-4a9f-b3b8-3c2cd00225a4",
-            "client_secret": "0e760437-bf34-4aad-9f8d-870be799c55d",
-            "tenant_id": "72f988bf-86f1-41af-91ab-2d7cd011db47",
-            "subscription_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
-            "managed_image_resource_group_name": "myResourceGroup",
-            "managed_image_name": "myPackerImage",
-            "os_type": "Linux",
-            "image_publisher": "Canonical",
-            "image_offer": "UbuntuServer",
-            "image_sku": "16.04-LTS",
-            "azure_tags": {
-                "dept": "Engineering",
-                "task": "Image deployment"
-            },
-    "location": "{{ user `location` }}",
-    "vm_size": "{{ user `vm_size` }}"
-        }
-    ],
-    "provisioners": [
-        {
-            "execute_command": "chmod +x {{ .Path }}; {{ .Vars }} sudo -E sh '{{ .Path }}'",
-            "inline": [
-                "apt-get update",
-                "apt-get upgrade -y",
-                "apt-get -y install nginx",
-                "/usr/sbin/waagent -force -deprovision+user && export HISTSIZE=0 && sync"
-            ],
-            "inline_shebang": "/bin/sh -x",
-            "type": "shell"
-        }
-    ]
+  "builders": [
+    {
+      "type": "azure-arm",
+      "client_id": "f5b6a5cf-fbdf-4a9f-b3b8-3c2cd00225a4",
+      "client_secret": "0e760437-bf34-4aad-9f8d-870be799c55d",
+      "tenant_id": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+      "subscription_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
+      "managed_image_resource_group_name": "myResourceGroup",
+      "managed_image_name": "myPackerImage",
+      "os_type": "Linux",
+      "image_publisher": "Canonical",
+      "image_offer": "UbuntuServer",
+      "image_sku": "16.04-LTS",
+      "azure_tags": {
+        "dept": "Engineering",
+        "task": "Image deployment"
+      },
+      "location": "{{ user `location` }}",
+      "vm_size": "{{ user `vm_size` }}"
+    }
+  ],
+  "provisioners": [
+    {
+      "execute_command": "chmod +x {{ .Path }}; {{ .Vars }} sudo -E sh '{{ .Path }}'",
+      "inline": [
+        "apt-get update",
+        "apt-get upgrade -y",
+        "apt-get -y install nginx",
+        "/usr/sbin/waagent -force -deprovision+user && export HISTSIZE=0 && sync"
+      ],
+      "inline_shebang": "/bin/sh -x",
+      "type": "shell"
+    }
+  ]
 }

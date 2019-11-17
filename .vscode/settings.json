@@ -1,24 +1,24 @@
 {
-    "cSpell.words": [
-        "Cloudposse",
-        "Mgmt",
-        "RHEL",
-        "albp",
-        "awscli",
-        "convertfrom",
-        "diskio",
-        "googleplus",
-        "iowait",
-        "jameswoolfenden",
-        "jmeter",
-        "killall",
-        "nginx",
-        "openjdk",
-        "reddit",
-        "redhat",
-        "stunnel",
-        "syslog",
-        "totalcpu",
-        "urite"
-    ]
+  "cSpell.words": [
+    "Cloudposse",
+    "Mgmt",
+    "RHEL",
+    "albp",
+    "awscli",
+    "convertfrom",
+    "diskio",
+    "googleplus",
+    "iowait",
+    "jameswoolfenden",
+    "jmeter",
+    "killall",
+    "nginx",
+    "openjdk",
+    "reddit",
+    "redhat",
+    "stunnel",
+    "syslog",
+    "totalcpu",
+    "urite"
+  ]
 }

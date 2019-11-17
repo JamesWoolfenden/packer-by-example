@@ -1,6 +1,8 @@
 [![Slalom][logo]](https://slalom.com)
 
-# packer-by-example [![Build Status](https://travis-ci.com/JamesWoolfenden/packer-by-example.svg?branch=master)](https://travis-ci.com/JamesWoolfenden/packer-by-example) [![Latest Release](https://img.shields.io/github/release/JamesWoolfenden/packer-by-example.svg)](https://github.com/JamesWoolfenden/packer-by-example/releases/latest)
+# Packer by Example [![Latest Release](https://img.shields.io/github/v/tag/JamesWoolfenden/packer-by-example.svg)](https://github.com/JamesWoolfenden/packer-by-example)
+
+By [James Woolfenden](https://www.linkedin.com/in/jameswoolfenden/)
 
 Packer-by-example is a collection of Scripts, Ansible, Makefiles and Packer files to building images in the Public Cloud.
 It's designed to work with CI/CD systems such as Travis CI, CircleCI and Jenkins, or even at your console.

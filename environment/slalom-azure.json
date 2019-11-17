@@ -1,6 +1,6 @@
 {
-    "location": "uksouth",
-    "vm_size": "Standard_A2",
-    "resourcegroup": "packer",
-    "storageaccount": "packerfiles"
+  "location": "uksouth",
+  "vm_size": "Standard_A2",
+  "resourcegroup": "packer",
+  "storageaccount": "packerfiles"
 }
