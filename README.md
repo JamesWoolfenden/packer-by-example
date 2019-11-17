@@ -19,9 +19,21 @@ Here's how to get started...
 
 1. `git clone https://github.com/jameswoolfenden/packer-by-example.git` to pull down the repository
 
-2. `./setup-packer` to get the tool.
+2. `./setup-packer.sh` to get the tool.
 
 ### Usage
+
+To run:
+
+```bash tab="*nix"
+./build.sh -p ./packfiles/CentOS/base-aws.json  -e ./environment/personal-jgw.json
+```
+
+```bash tab="powershell"
+ .\build.ps1 -packfile .\packfiles\CentOS\base-aws.json -environment .\environment\personal-jgw.json
+```
+
+The environment files hold variables and the packfiles are the packer **json** templates.
 
 <img src="https://gist.githubusercontent.com/JamesWoolfenden/aec6aa174646655fb0374be66b899327/raw/b4cc4244068fa95c9bf9ce432c2531b8c5f9acde/termtosvg_0_bpl_ol.svg?sanitize=true">
 
