@@ -33,4 +33,4 @@ With the Authenticaion confirmed it's time to run Packer, I have to choosen to u
 ./build.sh -packfile ./packfiles/redhat/base-aws.json -environment
 ```
 
-Additionally in the root you will find the script **iam_assum_role**, this allows you to assume an aws role to build your AMI's, or use a tool like **AWS-Vault** or if you have SAML Auth **SAML2AWS**. If you were running Packer within AWS already - as part of your CI setup then you would use an instance profile. 
+Additionally in the root you will find the script **iam_assume_role**, this allows you to assume an aws role to build your AMI's, or use a tool like **AWS-Vault** or if you have SAML Auth **SAML2AWS**. If you were running Packer within AWS already - as part of your CI setup then you would use an instance profile. 
