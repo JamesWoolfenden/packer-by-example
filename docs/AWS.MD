@@ -4,24 +4,33 @@ These examples target the customisation of existing AWS AMI's, usually from AWS 
 
 ## AWS Set-up
 
-You will need to set-up and configured your AWS:
+You will need to set-up and configured your AWS with the AWS **configure** command:
 
 ```cli
-aws configure
+$aws configure
+AWS Access Key ID [********************]:
+AWS Secret Access Key [*******************]:
+Default region name [eu-west-1]:
+Default output format [json]:
 ```
 
-When you run packer its is assumed that the following Environment variables are set:
+Packer respects the AWS Authentication chain, so it will check your default profile and if not set it look for environment variables.
+These are Environment variables it looks for:
 
 ```cli
 AWS_ACCESS_KEY_ID
 AWS_SECRET_ACCESS_KEY
 AWS_SESSION_TOKEN
 ```
+A simple test of your auth setup is see what S3 buckets you can list:
+```
+aws s3 ls
+```
 
-You can run
+With the Authenticaion confirmed it's time to run Packer, I have to choosen to use a wrapper script and assumes you call it fromt he root of this repository:
 
 ```bash
 ./build.sh -packfile ./packfiles/redhat/base-aws.json -environment
 ```
 
-Additionally in the root you will find the script **iam_assum_role**, this allows you to assume an aws role to build your AMI's, or use a tool like AWS-Vault or if you have SAML Auth SAML2AWS. 
+Additionally in the root you will find the script **iam_assum_role**, this allows you to assume an aws role to build your AMI's, or use a tool like **AWS-Vault** or if you have SAML Auth **SAML2AWS**. If you were running Packer within AWS already - as part of your CI setup then you would use an instance profile. 
