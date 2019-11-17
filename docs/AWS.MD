@@ -1,6 +1,6 @@
-# AWS amis
+# AWS AMI
 
-These examples target the customisation of existing AWS Amis, usually from AWS or from trusted sources such as Canonicals AWS account. You can find the details of an AMI from the command line
+These examples target the customisation of existing AWS AMI's, usually from AWS or from trusted sources such as Canonicals AWS account. You can find the details of an AMI from the command line.
 
 ## AWS Set-up
 
@@ -24,4 +24,4 @@ You can run
 ./build.sh -packfile ./packfiles/redhat/base-aws.json -environment
 ```
 
-Additionally in the root you will find the script **iam_assum_role**, this allows you to assume an aws role to build your AMI's.
+Additionally in the root you will find the script **iam_assum_role**, this allows you to assume an aws role to build your AMI's, or use a tool like AWS-Vault or if you have SAML Auth SAML2AWS. 
