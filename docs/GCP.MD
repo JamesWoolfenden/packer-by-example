@@ -8,19 +8,19 @@ If this is a new use of GCP you will have to run thru a bit of initial set-up.
 When you run:
 
 ```bash
-./build.sh -packfile ./packfiles/debian/base-gcp.json -environment
+./build.sh -packfile ./packfiles/debian/base-gcp.json -environment ./environment/template-gcp.json
 ```
 
 You will get errors like:
 
 ```bash
 * googleapi: Error 403: Access Not Configured.
-Compute Engine API has not been used in project 770172716123 before or it is disabled.
+Compute Engine API has not been used in project XXXXXXXXXXXX before or it is disabled.
 Enable it by visiting
- https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=770172716123 then retry.
+ https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=XXXXXXXXXXXX then retry.
 If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry, accessNotConfigured
 
-## Solution 1 Enable via https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=770172716123
+## Solution 1 Enable via https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=XXXXXXXXXXXX
 
 ## Solution 2 Via cli
 From: https://cloud.google.com/endpoints/docs/openapi/enable-api
@@ -28,9 +28,42 @@ From: https://cloud.google.com/endpoints/docs/openapi/enable-api
 gcloud projects list
 
 gcloud config set project [YOUR_PROJECT_ID]
-gcloud config set project focused-elysium-224508
 
 gcloud services list --available
 gcloud services enable [SERVICE_NAME]
 gcloud services enable Compute Engine API
+```
+
+Once your service API's out enabled:
+
+```powershell
+ .\build.ps1 -packfile .\packfiles\Debian\base-gcp.json -environment .\environment\template-gcp.json
+Checking .\environment\template-gcp.json Found: True
+Checking .\packfiles\Debian\base-gcp.json Found: True
+Template validated successfully.
+googlecompute output will be in this color.
+
+==> googlecompute: Checking image does not exist...
+==> googlecompute: Creating temporary SSH key for instance...
+==> googlecompute: Using image: debian-9-stretch-v20191115
+==> googlecompute: Creating instance...
+    googlecompute: Loading zone: us-central1-a
+    googlecompute: Loading machine type: n1-standard-1
+    googlecompute: Requesting instance creation...
+    googlecompute: Waiting for creation operation to complete...
+    googlecompute: Instance has been created!
+==> googlecompute: Waiting for the instance to become running...
+    googlecompute: IP: 34.68.207.109
+==> googlecompute: Using ssh communicator to connect: 34.68.207.109
+==> googlecompute: Waiting for SSH to become available...
+==> googlecompute: Connected to SSH!
+==> googlecompute: Deleting instance...
+    googlecompute: Instance has been deleted!
+==> googlecompute: Creating image...
+==> googlecompute: Deleting disk...
+    googlecompute: Disk has been deleted!
+Build 'googlecompute' finished.
+
+==> Builds finished. The artifacts of successful builds are:
+--> googlecompute: A disk image was created: packer-1574001361
 ```
