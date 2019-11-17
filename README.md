@@ -51,6 +51,14 @@ Instructions for setting up each Cloud provider are here:
 There are several different examples, for Windows and differe Linux distributions, and different versions of each.
 The "packfiles" have examples of using basic features of script or Ansible providers to configure your images, as well as a method for versioning the AMI's.
 
+## Troubleshooting
+
+Packer is a tidy tool and to investigate failures you need to tell it not to be. Supply the Debug Falg and the tool will leave the unfinished image  behind and the SSH key to connect.
+
+### Common issue: SSH is blocked
+
+Some Environments lock down in bound and Outbound SSH connects by controlling port 22.
+
 ## Help
 
 **Got a question?**
