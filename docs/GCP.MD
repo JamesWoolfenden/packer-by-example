@@ -7,34 +7,50 @@ There is an example Debian image to run with GCP.
 If this is a new use of GCP you will have to run thru a bit of initial set-up.
 When you run:
 
+### Bash
+
 ```bash
 ./build.sh -packfile ./packfiles/debian/base-gcp.json -environment ./environment/template-gcp.json
 ```
 
-You will get errors like:
+### Windows
+
+```powershelll
+ .\build.ps1 -packfile .\packfiles\Debian\base-gcp.json -environment .\environment\template-gcp.json
+```
+
+### Troubleshooting
+
+You will get errors like these at first:
 
 ```bash
 * googleapi: Error 403: Access Not Configured.
-Compute Engine API has not been used in project XXXXXXXXXXXX before or it is disabled.
+Compute Engine API has not been used in project REPLACEME before or it is disabled.
 Enable it by visiting
- https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=XXXXXXXXXXXX then retry.
+ https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=REPLACEME then retry.
 If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry, accessNotConfigured
+```
 
-## Solution 1 Enable via https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=XXXXXXXXXXXX
+## First time enablement of Google APIs**
 
-## Solution 2 Via cli
-From: https://cloud.google.com/endpoints/docs/openapi/enable-api
+### Solution 1 Enable via http
 
+Open you console [API page](https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=REPLACEME)
+
+### Solution 2 Via cli
+
+From: <https://cloud.google.com/endpoints/docs/openapi/enable-api>
+
+```cli
 gcloud projects list
 
 gcloud config set project [YOUR_PROJECT_ID]
 
 gcloud services list --available
 gcloud services enable [SERVICE_NAME]
-gcloud services enable Compute Engine API
 ```
 
-Once your service API's out enabled:
+Once your service API's are enabled, you can build your new image:
 
 ```powershell
  .\build.ps1 -packfile .\packfiles\Debian\base-gcp.json -environment .\environment\template-gcp.json
