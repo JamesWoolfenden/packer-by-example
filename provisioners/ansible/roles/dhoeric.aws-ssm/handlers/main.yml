@@ -1,0 +1,5 @@
+---
+- name: restart amazon-ssm-agent
+  service:
+    name: amazon-ssm-agent
+    state: restarted

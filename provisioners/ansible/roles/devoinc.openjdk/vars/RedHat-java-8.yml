@@ -1,0 +1,4 @@
+---
+java__base_packages:
+  - java-1.{{ java__version|string }}.0-openjdk-headless
+java__jdk_packages: []

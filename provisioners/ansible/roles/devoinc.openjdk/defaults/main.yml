@@ -1,0 +1,50 @@
+---
+# OpenJDK version
+java__version: 8
+
+# If the APT configuration is not detected, the role will install the default
+# Java packages for a given OS release.
+java__install: "{{ True
+  if (ansible_local|d() and ansible_local.apt|d() and
+  ansible_local.apt.configured|d())
+  else False }}"
+
+# By default the role installs only the Java Runtime Environment (JRE)
+# packages. Other Ansible roles can request installation of the compatible Java
+# Development Kit (JDK) by enabling this variable.
+java__install_jdk: false
+
+#
+# List of default APT packages which should be installed for Java Runtime
+# Environment.
+java__base_packages: '{{ ([ "openjdk-" + java__version|string + "-jre-headless"
+  ] if java__install|bool else [ "default-jre-headless" ])
+  + [ "ca-certificates-java" ] }}'
+
+# List of default APT packages which should be installed for Java Development
+# Kit.
+java__jdk_packages: '{{ ([ "openjdk-" + java__version|string + "-jdk-headless" ]
+  if java__install|bool
+  else ([ "default-jdk" ]
+  if (ansible_distribution_release in
+  [ "wheezy", "jessie", "precise", "trusty" ])
+  else [ "default-jdk-headless" ]))
+  if java__install_jdk|bool else [] }}'
+
+# List of packages which should be installed on all hosts in Ansible
+# inventory.
+java__packages: []
+
+# List of packages which should be installed on a group of hosts in Ansible
+# inventory.
+java__group_packages: []
+
+# List of packages which should be installed on specific hosts in Ansible
+# inventory.
+java__host_packages: []
+
+# List of packages requested by other Ansible roles.
+java__dependent_packages: []
+
+# Set java alternatives.
+java__alternatives: ""

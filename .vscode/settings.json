@@ -4,8 +4,10 @@
     "Mgmt",
     "RHEL",
     "albp",
+    "ansible",
     "awscli",
     "convertfrom",
+    "deprovision",
     "diskio",
     "googleplus",
     "iowait",
@@ -14,11 +16,14 @@
     "killall",
     "nginx",
     "openjdk",
+    "provisioners",
     "reddit",
     "redhat",
     "stunnel",
     "syslog",
     "totalcpu",
-    "urite"
+    "urite",
+    "waagent",
+    "xenial"
   ]
 }

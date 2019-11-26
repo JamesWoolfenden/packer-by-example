@@ -11,13 +11,16 @@
       "script": "provisioners/scripts/linux/ubuntu/install_ansible.sh"
     },
     {
-      "type": "shell",
-      "script": "provisioners/scripts/linux/ubuntu/install_aws_ssm.sh"
+      "type": "ansible-local",
+      "playbook_file": "provisioners/ansible/playbooks/cassandra.yml",
+      "role_paths": [
+        "provisioners/ansible/roles/cloudwatch-metrics",
+        "provisioners/ansible/roles/devoinc.openjdk"
+      ]
     },
     {
-      "type": "ansible-local",
-      "playbook_file": "provisioners/ansible/playbooks/cloudwatch-metrics.yml",
-      "role_paths": ["provisioners/ansible/roles/cloudwatch-metrics"]
+      "type": "shell",
+      "script": "provisioners/scripts/linux/ubuntu/install_cassandra.sh"
     }
   ],
   "builders": [
@@ -38,8 +41,8 @@
       },
       "instance_type": "{{ user `instance_type` }}",
       "ssh_username": "ubuntu",
-      "ami_name": "ubuntu-BASE-v{{user `build_number`}}-{{timestamp}}-AMI",
-      "ami_description": "ubuntu base AMI",
+      "ami_name": "cassandra-BASE-v{{user `build_number`}}-{{timestamp}}-AMI",
+      "ami_description": "ubuntu cassandra AMI",
       "ami_virtualization_type": "hvm",
       "ami_users": "{{ user `ami_users` }}",
       "temporary_key_pair_name": "ubuntu-packer-{{timestamp}}",
@@ -47,13 +50,13 @@
       "subnet_id": "{{user `subnet_id`}}",
       "associate_public_ip_address": true,
       "run_tags": {
-        "Name": "ubuntu-base-packer",
-        "Application": "base"
+        "Name": "ubuntu-cassandra-packer",
+        "Application": "cassandra"
       },
       "tags": {
         "OS_Version": "ubuntu",
         "Version": "{{user `build_number`}}",
-        "Application": "Base Image",
+        "Application": "Cassandra Image",
         "Runner": "EC2"
       }
     }

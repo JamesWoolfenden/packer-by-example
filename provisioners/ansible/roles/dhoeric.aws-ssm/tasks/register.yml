@@ -1,0 +1,10 @@
+---
+- name: Check if node is registered
+  stat:
+    path: /var/lib/amazon/ssm/registration
+  register: stat_result
+
+- name: Register managed instance
+  command: amazon-ssm-agent -register -clear -code '{{aws_ssm_activation_code}}' -id '{{aws_ssm_activation_id}}' -region '{{aws_ssm_ec2_region}}' -y
+  notify: restart amazon-ssm-agent
+  when: not stat_result.stat.exists

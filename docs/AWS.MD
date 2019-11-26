@@ -22,15 +22,17 @@ AWS_ACCESS_KEY_ID
 AWS_SECRET_ACCESS_KEY
 AWS_SESSION_TOKEN
 ```
-A simple test of your auth setup is see what S3 buckets you can list:
-```
+
+A simple test of your auth set-up is see what S3 buckets you can list:
+
+```cli
 aws s3 ls
 ```
 
-With the Authenticaion confirmed it's time to run Packer, I have to choosen to use a wrapper script and assumes you call it fromt he root of this repository:
+With the Authentication confirmed it's time to run Packer, I have to chosen to use a wrapper script and it assumes you call it from the root of this repository:
 
 ```bash
 ./build.sh -packfile ./packfiles/redhat/base-aws.json -environment
 ```
 
-Additionally in the root you will find the script **iam_assume_role**, this allows you to assume an aws role to build your AMI's, or use a tool like **AWS-Vault** or if you have SAML Auth **SAML2AWS**. If you were running Packer within AWS already - as part of your CI setup then you would use an instance profile. 
+Additionally in the root you will find the script **iam_assum_role**, this allows you to assume an aws role to build your AMI's.

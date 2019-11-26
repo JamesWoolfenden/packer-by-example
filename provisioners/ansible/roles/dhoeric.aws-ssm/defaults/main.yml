@@ -1,0 +1,6 @@
+---
+# defaults file for aws-ssm
+url: "amd64"
+#aws_ssm_activation_code:
+#aws_ssm_activation_id:
+#aws_ssm_ec2_region: "{{ec2_region}}"

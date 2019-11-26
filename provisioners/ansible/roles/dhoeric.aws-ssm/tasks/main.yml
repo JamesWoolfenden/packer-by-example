@@ -1,0 +1,39 @@
+---
+# tasks file for aws-ssm
+- name: Get CPU architecture
+  command: getconf LONG_BIT
+  register: cpu_arch
+  changed_when: False
+  check_mode: no
+
+- name: Change URL destination for 32bit arch
+  set_fact:
+    url: "386"
+  when: cpu_arch.stdout == '32'
+
+- name: Install rpm file for Redhat Family (Amazon Linux, RHEL, and CentOS) 32/64-bit
+  become: yes
+  become_user: root
+  yum:
+    name: "https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/linux_{{ url }}/amazon-ssm-agent.rpm"
+    state: present
+  when: ansible_os_family == 'RedHat'
+
+- name: Install deb file for Debian family 32/64-bit
+  become: yes
+  become_user: root
+  apt:
+    deb: "https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/debian_{{ url }}/amazon-ssm-agent.deb"
+  when: ansible_os_family == 'Debian'
+
+- include: register.yml
+  when: aws_ssm_activation_code is defined and aws_ssm_activation_id is defined
+
+- name: Register to service
+  become: yes
+  become_user: root
+  service:
+    name: amazon-ssm-agent
+    enabled: yes
+    state: started
+  when: ansible_os_family == 'Debian'
