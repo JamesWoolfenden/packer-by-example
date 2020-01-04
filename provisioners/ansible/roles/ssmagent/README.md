@@ -6,7 +6,7 @@
 
 Install AWS EC2 Systems Manager (SSM) agent
 
-http://docs.aws.amazon.com/systems-manager/latest/userguide/ssm-agent.html
+<http://docs.aws.amazon.com/systems-manager/latest/userguide/ssm-agent.html>
 
 ## Requirements
 
@@ -34,4 +34,4 @@ MIT
 
 ## Author Information
 
-https://www.github.com/dhoeric
+<https://www.github.com/dhoeric>

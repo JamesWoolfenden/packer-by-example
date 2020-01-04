@@ -8,7 +8,7 @@ $Windows=(aws ec2 describe-images --owners self amazon --filters --filters "Name
 
 But it's easier to use a source AMI filter:
 
-~~~ packer
+``` packer
 "source_ami_filter":
 {
     "filters": {
@@ -22,4 +22,4 @@ But it's easier to use a source AMI filter:
             ],
             "most_recent": true
 }
-~~~
+```

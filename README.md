@@ -30,11 +30,12 @@ To run:
 ```
 
 or on Windows:
+
 ```bash tab="powershell"
  .\build.ps1 -packfile .\packfiles\CentOS\base-aws.json -environment .\environment\personal-jgw.json
 ```
 
-The environment files hold variables and the packfiles are the packer **json** templates. I'd prefer not to need the variable files but some values must be supplied. 
+The environment files hold variables and the packfiles are the packer **json** templates. I'd prefer not to need the variable files but some values must be supplied.
 
 Packer can be used to make an AMI that is prebuilt for EC2 with support for Cloudwatch Logs and Metrics:
 
@@ -48,12 +49,12 @@ Instructions for setting up each Cloud provider are here:
 - [GCP](docs/GCP.MD)
 - [AZURE](docs/AZURE.MD)
 
-There are several different examples, for Windows and differe Linux distributions, and different versions of each.
+There are several different examples, for Windows and different Linux distributions, and different versions of each.
 The "packfiles" have examples of using basic features of script or Ansible providers to configure your images, as well as a method for versioning the AMI's.
 
 ## Troubleshooting
 
-Packer is a tidy tool and to investigate failures you need to tell it not to be. Supply the Debug Falg and the tool will leave the unfinished image  behind and the SSH key to connect.
+Packer is a tidy tool and to investigate failures you need to tell it not to be. Supply the Debug Flag and the tool will leave the unfinished image  behind and the SSH key to connect.
 
 ### Common issue: SSH is blocked
 

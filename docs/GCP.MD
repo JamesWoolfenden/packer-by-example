@@ -4,7 +4,7 @@ There is an example Debian image to run with GCP.
 
 ## GCP setup
 
-If this is a new use of GCP you will have to run thru a bit of initial set-up.
+If this is a new use of GCP you will have to run through a bit of initial set-up.
 When you run:
 
 ### Bash
