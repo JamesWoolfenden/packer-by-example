@@ -2,7 +2,7 @@
 set -exo
 curl https://keybase.io/hashicorp/pgp_keys.asc | gpg --import
 apt-get install unzip
-VERSION="1.3.5"
+VERSION="1.5.1"
 TOOL="packer"
 EDITION="linux_amd64"
 cd /usr/local/bin
