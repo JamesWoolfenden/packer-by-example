@@ -11,7 +11,7 @@ source "amazon-ebs" "demo" {
         owners= ["amazon"]
       }
       ami_name= "packer-demo-{{timestamp}}"
-      user_data_file= "./bootstrap_win.txt"
+      user_data_file= ".\\bootstrap_win.txt"
       communicator= "winrm"
       winrm_username= "Administrator"
       winrm_password="SuperS3cr3t!!!!"
