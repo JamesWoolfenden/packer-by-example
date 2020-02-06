@@ -3,7 +3,7 @@
     "aws_access_key": "{{env `AWS_ACCESS_KEY_ID`}}",
     "aws_secret_key": "{{env `AWS_SECRET_ACCESS_KEY`}}",
     "build_number": "{{env `BUILD_NUMBER`}}",
-    "instance_type": "t3.large"
+    "instance_type": "t2.micro"
   },
   "builders": [
     {
