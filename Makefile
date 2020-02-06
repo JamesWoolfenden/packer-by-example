@@ -1,6 +1,6 @@
 #Makefile
 PACKFILE ?= "packfiles/base.json"
-ENVIRONMENT ?= "environment/management-<account-number>"
+ENVIRONMENT ?= "environment/<env>.json"
 
 .PHONY: base
 

@@ -3,7 +3,7 @@
     Creates an environment file for use with Packer packfiles
 .DESCRIPTION
     The Packer files in the packfiles folder expect certain variables to come from and environment file.
-    This script is designed to create theese for you.
+    This script is designed to create these for you.
 .PARAMETER Path
     The path to the .
 .EXAMPLE

@@ -19,7 +19,7 @@ Here's how to get started...
 
 1. `git clone https://github.com/jameswoolfenden/packer-by-example.git` to pull down the repository
 
-2. `./setup-packer.sh` to get the tool.
+2. `./setup-packer.sh` to get the tool. Or `brew install packer` on MacOS or `cinst packer` on Windows.
 
 ### Usage
 
@@ -29,7 +29,7 @@ To run:
 ./build.sh -p ./packfiles/CentOS/base-aws.json  -e ./environment/personal-jgw.json
 ```
 
-or on Windows:
+Or on Windows:
 
 ```bash tab="powershell"
  .\build.ps1 -packfile .\packfiles\CentOS\base-aws.json -environment .\environment\personal-jgw.json
@@ -58,7 +58,7 @@ Packer is a tidy tool and to investigate failures you need to tell it not to be.
 
 ### Common issue: SSH is blocked
 
-Some Environments lock down in bound and Outbound SSH connects by controlling port 22.
+Some Environments lock down inbound and outbound SSH connections by blocking port 22.
 
 ## Help
 
@@ -74,7 +74,7 @@ Please use the [issue tracker](https://github.com/JamesWoolfenden/packer-by-exam
 
 ## Copyrights
 
-Copyright © 2019-2019 [Slalom, LLC](https://slalom.com)
+Copyright © 2019-2020 [Slalom, LLC](https://slalom.com)
 
 ## License
 
