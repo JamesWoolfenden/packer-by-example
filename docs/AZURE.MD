@@ -4,7 +4,7 @@
 
 (Some of the packerfiles are modified examples from the Packer Source code repository).
 
-## Prerequistes
+## Pre-requisites
 
 Packer instructions here <https://www.packer.io/docs/builders/azure-setup.html>
 Needs an Azure resource group and storage container to store the completed VHDs in. If you have multiple AZ subscriptions you also need to set the current Sub. Using the Az cli:

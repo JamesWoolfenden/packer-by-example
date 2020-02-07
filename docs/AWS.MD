@@ -32,7 +32,7 @@ aws s3 ls
 With the Authentication confirmed it's time to run Packer, I have to chosen to use a wrapper script and it assumes you call it from the root of this repository:
 
 ```bash
-./build.sh -packfile ./packfiles/redhat/base-aws.json -environment
+./build.sh -packfile ./packfiles/redhat/base-aws.json -environment personal.json
 ```
 
-Additionally in the root you will find the script **iam_assum_role**, this allows you to assume an aws role to build your AMI's.
+Additionally in the root you will find the script **iam_assume_role**, this allows you to assume an aws role to build your AMI's.

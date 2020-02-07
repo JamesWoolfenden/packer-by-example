@@ -37,7 +37,7 @@ If you enabled this API recently, wait a few minutes for the action to propagate
 
 Open you console [API page](https://console.developers.google.com/apis/api/compute.googleapis.com/overview?project=REPLACEME)
 
-### Solution 2 Via cli
+### Solution 2 Via CLI
 
 From: <https://cloud.google.com/endpoints/docs/openapi/enable-api>
 

@@ -7,4 +7,4 @@ Instructions for each Cloud provider are here:
 - [AZURE](docs/AZURE.MD)
 
 There are several different OS examples, Windows and Linux, and different versions of each.
-The "packfiles" have examples of using basic features of scipts or Ansible to configure your images, aw well versioning the AMI's.
+The "packfiles" have examples of using basic features of scripts or Ansible to configure your images, aw well versioning the AMI's.
