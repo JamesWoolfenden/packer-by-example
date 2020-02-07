@@ -17,7 +17,7 @@ source "amazon-ebs" "Windows2019" {
       winrm_username= "Administrator"
       winrm_timeout= "10m"
       winrm_password="SuperS3cr3t!!!!"
-      #if empty it use the default vpc
+      #if empty it uses the default vpc, COMMENTS!!!!
       vpc_id= ""
       subnet_id=""
 }

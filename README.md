@@ -52,6 +52,16 @@ Instructions for setting up each Cloud provider are here:
 There are several different examples, for Windows and different Linux distributions, and different versions of each.
 The "packfiles" have examples of using basic features of script or Ansible providers to configure your images, as well as a method for versioning the AMI's.
 
+## **NEW HCL2**
+
+Packer has started adding in support for HCL2, this means that Packer is starting to look and feel like Terraform. It's still very much a in beta.
+
+I have included a working example in the HCL2 folder.
+
+```CLI
+ packer build .\awswin2k19.pkr.hcl
+```
+
 ## Troubleshooting
 
 Packer is a tidy tool and to investigate failures you need to tell it not to be. Supply the Debug Flag and the tool will leave the unfinished image  behind and the SSH key to connect.
