@@ -22,7 +22,7 @@
         "most_recent": true
       },
       "instance_type": "{{ user `instance_type` }}",
-      "user_data_file": "packfiles/Windows/setup_winrm.txt",
+      "user_data_file": "{{template_dir}}/setup_winrm.txt",
       "communicator": "winrm",
       "winrm_username": "Administrator",
       "winrm_timeout": "10m",
