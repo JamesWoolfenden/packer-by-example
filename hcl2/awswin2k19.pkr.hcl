@@ -10,24 +10,17 @@ source "amazon-ebs" "Windows2019" {
         most_recent= true
         owners= ["amazon"]
       }
-      ami_name= "Base v1 Windows2019"
+      ami_name= "Base v1 Windows2019 {{timestamp}}"
       ami_description= "Windows 2019 Base"
-      user_data_file= "bootstrap_win.txt"
+      associate_public_ip_address="true"
+      user_data_file= "./HCL2/bootstrap_win.txt"
       communicator= "winrm"
       winrm_username= "Administrator"
       winrm_timeout= "10m"
       winrm_password="SuperS3cr3t!!!!"
+      #using spot market as cheaper
+      spot_price="0"
       #if empty it uses the default vpc, COMMENTS!!!!
       vpc_id= ""
       subnet_id=""
-}
-
-build {
-sources =[
-   "source.amazon-ebs.Windows2019"
-]
- provisioner "powershell" {
-    inline = ["iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))|out-null"
-      ,"choco install javaruntime -y -force"]
-  }
 }
