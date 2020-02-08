@@ -1,0 +1,39 @@
+{
+  "builders": [
+    {
+      "type": "null",
+      "communicator": "none"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "comment",
+      "comment": "Begin",
+      "ui": true,
+      "bubble_text": true
+    },
+    {
+      "type": "shell-local",
+      "inline": ["echo \"This is a shell script\""]
+    },
+    {
+      "type": "comment",
+      "comment": "In the middle of Provisioning run",
+      "ui": true
+    },
+    {
+      "type": "shell-local",
+      "inline": ["echo \"This is another shell script\""]
+    },
+    {
+      "type": "comment",
+      "comment": "this comment is invisible and won't go to the UI"
+    },
+    {
+      "type": "comment",
+      "comment": "End",
+      "ui": true,
+      "bubble_text": true
+    }
+  ]
+}

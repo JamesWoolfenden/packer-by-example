@@ -4,30 +4,23 @@
     "aws_secret_key": "{{env `AWS_SECRET_ACCESS_KEY`}}",
     "aws_session_token": "{{env `AWS_SESSION_TOKEN`}}",
     "build_number": "{{env `BUILD_NUMBER`}}",
-    "aws-region": "{{env `AWS_REGION`}}"
+    "instance_type": "t3.micro"
   },
   "provisioners": [
     {
       "type": "shell",
-      "script": "provisioners/scripts/linux/redhat/install_ansible.sh"
+      "script": "{{template_dir}}/../../provisioners/scripts/linux/redhat/install_ansible.sh"
     },
     {
       "type": "shell",
-      "script": "provisioners/scripts/linux/redhat/install_aws_ssm.sh"
-    },
-    {
-      "type": "shell",
-      "script": "provisioners/scripts/linux/redhat/install_awscli.sh"
+      "script": "{{template_dir}}/../../provisioners/scripts/linux/redhat/install_aws_ssm.sh"
     },
     {
       "type": "ansible-local",
-      "playbook_file": "provisioners/ansible/playbooks/cloudwatch-albp.yml",
-      "role_paths": ["provisioners/ansible/roles/cloudwatch-logs"]
-    },
-    {
-      "type": "ansible-local",
-      "playbook_file": "provisioners/ansible/playbooks/cloudwatch-metrics.yml",
-      "role_paths": ["provisioners/ansible/roles/cloudwatch-metrics"]
+      "playbook_file": "{{template_dir}}/../../provisioners/ansible/playbooks/cloudwatch-metrics.yml",
+      "role_paths": [
+        "{{template_dir}}/../../provisioners/ansible/roles/cloudwatch-metrics"
+      ]
     }
   ],
   "builders": [
@@ -40,31 +33,31 @@
       "source_ami_filter": {
         "filters": {
           "virtualization-type": "hvm",
-          "name": "nginx-plus-ami-rhel7-hvm-*",
+          "name": "CentOS Linux 7 x86_64 HVM EBS*",
           "root-device-type": "ebs"
         },
         "owners": ["679593333241"],
         "most_recent": true
       },
       "instance_type": "{{ user `instance_type` }}",
-      "ssh_username": "ec2-user",
-      "ami_name": "ALBP-v{{user `build_number`}}-{{timestamp}}-AMI",
-      "ami_description": "Application Load Balancer Proxy AMI",
+      "ssh_username": "centos",
+      "ami_name": "CentOS-BASE-v{{user `build_number`}}-{{timestamp}}-AMI",
+      "ami_description": "CentOS base AMI",
       "ami_virtualization_type": "hvm",
       "ami_users": "{{ user `ami_users` }}",
-      "temporary_key_pair_name": "albp-packer-{{timestamp}}",
+      "temporary_key_pair_name": "centos-packer-{{timestamp}}",
       "vpc_id": "{{user `vpc_id`}}",
       "subnet_id": "{{user `subnet_id`}}",
+      "spot_price": "auto",
       "associate_public_ip_address": true,
       "run_tags": {
-        "Name": "albp-packer",
-        "Application": "base",
-        "Project": "Project"
+        "Name": "centos-base-packer",
+        "Application": "base"
       },
       "tags": {
-        "OS_Version": "RedHat7",
+        "OS_Version": "CentOS",
         "Version": "{{user `build_number`}}",
-        "Application": "ALBP",
+        "Application": "Base Image",
         "Runner": "EC2"
       }
     }

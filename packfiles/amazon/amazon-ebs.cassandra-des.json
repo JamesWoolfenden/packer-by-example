@@ -9,7 +9,7 @@
   "provisioners": [
     {
       "type": "shell",
-      "script": "provisioners/scripts/linux/install-cassandra.sh"
+      "script": "{{template_dir}}/../../provisioners/scripts/linux/install-cassandra-dse.sh"
     }
   ],
   "builders": [
@@ -30,16 +30,17 @@
       },
       "instance_type": "{{ user `instance_type` }}",
       "ssh_username": "ec2-user",
-      "ami_name": "cassandra-BASE-v{{user `build_number`}}-{{timestamp}}-AMI",
-      "ami_description": "amazon cassandra AMI",
+      "ami_name": "cassandra-DSE-BASE-v{{user `build_number`}}-{{timestamp}}-AMI",
+      "ami_description": "amazon cassandra DSE AMI",
       "ami_virtualization_type": "hvm",
       "ami_users": "{{ user `ami_users` }}",
       "temporary_key_pair_name": "amazon-packer-{{timestamp}}",
       "vpc_id": "{{user `vpc_id`}}",
       "subnet_id": "{{user `subnet_id`}}",
+      "spot_price": "auto",
       "associate_public_ip_address": true,
       "run_tags": {
-        "Name": "amazon-cassandra-packer",
+        "Name": "amazon-cassandra-dse-packer",
         "Application": "cassandra"
       },
       "tags": {
