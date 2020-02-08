@@ -46,7 +46,7 @@ $env:ARM_SUBSCRIPTION_ID="xxxxxx-xxxx-xxxx-xxxx-xxxxxxx"
 $env:ARM_TENANT_ID="xxxxxx-xxxx-xxxx-xxxx-xxxxxxx"
 ```
 
-The Centos example additionally uses an ssh passwords and this needs to be preset.
+The CentOS example additionally uses an ssh passwords and this needs to be preset.
 
 ```bash
 export ARM_SSH_PASS="cent0$73"

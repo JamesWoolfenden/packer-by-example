@@ -29,10 +29,10 @@ A simple test of your auth set-up is see what S3 buckets you can list:
 aws s3 ls
 ```
 
-With the Authentication confirmed it's time to run Packer, I have to chosen to use a wrapper script and it assumes you call it from the root of this repository:
+With the Authentication confirmed it's time to run Packer, I have to chosen to use a wrapper script and you can call it from anywhere:
 
 ```bash
-./build.sh -packfile ./packfiles/redhat/base-aws.json -environment personal.json
+./build.sh -packfile ./packfiles/RedHat/amazon-ebs.base.json -environment personal.json
 ```
 
 Additionally in the root you will find the script **iam_assume_role**, this allows you to assume an aws role to build your AMI's.
