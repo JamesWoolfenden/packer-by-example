@@ -28,6 +28,7 @@
       "ami_virtualization_type": "hvm",
       "associate_public_ip_address": true,
       "instance_type": "{{ user `instance_type` }}",
+      "spot_price": "auto",
       "ssh_username": "ec2-user",
       "subnet_id": "{{user `subnet_id`}}",
       "temporary_key_pair_name": "confluent-zookeeper-packer-{{timestamp}}",
@@ -48,32 +49,32 @@
   "provisioners": [
     {
       "type": "ansible-local",
-      "playbook_file": "provisioners/ansible/playbooks/confluent.yml",
+      "playbook_file": "{{template_dir}}/../../provisioners/ansible/playbooks/confluent.yml",
       "role_paths": [
-        "provisioners/ansible/roles/openjdk",
-        "provisioners/ansible/roles/confluent.common"
+        "{{template_dir}}/../../provisioners/ansible/roles/openjdk",
+        "{{template_dir}}/../../provisioners/ansible/roles/confluent.common"
       ]
     },
     {
       "type": "ansible-local",
-      "playbook_file": "provisioners/ansible/playbooks/confluent-zookeeper.yml",
+      "playbook_file": "{{template_dir}}/../../provisioners/ansible/playbooks/confluent-zookeeper.yml",
       "role_paths": [
-        "provisioners/ansible/roles/confluent.zookeeper",
-        "provisioners/ansible/roles/stunnel"
+        "{{template_dir}}/../../provisioners/ansible/roles/confluent.zookeeper",
+        "{{template_dir}}/../../provisioners/ansible/roles/stunnel"
       ]
     },
     {
       "type": "shell",
-      "script": "provisioners/scripts/linux/redhat/open_confluent_firewall.sh"
+      "script": "{{template_dir}}/../../provisioners/scripts/linux/redhat/open_confluent_firewall.sh"
     },
     {
       "type": "shell",
-      "script": "provisioners/scripts/linux/redhat/install_awscli.sh"
+      "script": "{{template_dir}}/../../provisioners/scripts/linux/redhat/install_awscli.sh"
     },
     {
       "type": "ansible-local",
-      "playbook_file": "provisioners/ansible/playbooks/cloudwatch-confluent.yml",
-      "role_paths": ["provisioners/ansible/roles/cloudwatch-logs"]
+      "playbook_file": "{{template_dir}}/../../provisioners/ansible/playbooks/cloudwatch-confluent.yml",
+      "role_paths": ["{{template_dir}}/../../provisioners/ansible/roles/cloudwatch-logs"]
     }
   ]
 }

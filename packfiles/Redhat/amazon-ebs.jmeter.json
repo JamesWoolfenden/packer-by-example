@@ -28,6 +28,7 @@
       "ami_virtualization_type": "hvm",
       "associate_public_ip_address": true,
       "instance_type": "{{ user `instance_type` }}",
+      "spot_price": "auto",
       "ssh_username": "ec2-user",
       "subnet_id": "{{user `subnet_id`}}",
       "temporary_key_pair_name": "jmeter-{{timestamp}}",
@@ -48,14 +49,14 @@
   "provisioners": [
     {
       "type": "shell",
-      "script": "provisioners/scripts/linux/redhat/install_ansible.sh"
+      "script": "{{template_dir}}/../../provisioners/scripts/linux/redhat/install_ansible.sh"
     },
     {
       "type": "ansible-local",
-      "playbook_file": "provisioners/ansible/playbooks/jmeter.yml",
+      "playbook_file": "{{template_dir}}/../../provisioners/ansible/playbooks/jmeter.yml",
       "role_paths": [
-        "provisioners/ansible/roles/openjdk",
-        "provisioners/ansible/roles/jmeter"
+        "{{template_dir}}/../../provisioners/ansible/roles/openjdk",
+        "{{template_dir}}/../../provisioners/ansible/roles/jmeter"
       ]
     }
   ]

@@ -49,32 +49,32 @@
   "provisioners": [
     {
       "type": "ansible-local",
-      "playbook_file": "provisioners/ansible/playbooks/confluent.yml",
+      "playbook_file": "{{template_dir}}/../../provisioners/ansible/playbooks/confluent.yml",
       "role_paths": [
-        "provisioners/ansible/roles/openjdk",
-        "provisioners/ansible/roles/confluent.common"
+        "{{template_dir}}/../../provisioners/ansible/roles/openjdk",
+        "{{template_dir}}/../../provisioners/ansible/roles/confluent.common"
       ]
     },
     {
       "type": "ansible-local",
-      "playbook_file": "provisioners/ansible/playbooks/confluent-broker.yml",
+      "playbook_file": "{{template_dir}}/../../provisioners/ansible/playbooks/confluent-broker.yml",
       "role_paths": [
-        "provisioners/ansible/roles/confluent.kafka-broker",
-        "provisioners/ansible/roles/cloudwatch-logs"
+        "{{template_dir}}/../../provisioners/ansible/roles/confluent.kafka-broker",
+        "{{template_dir}}/../../provisioners/ansible/roles/cloudwatch-logs"
       ]
     },
     {
       "type": "shell",
-      "script": "provisioners/scripts/linux/open_confluent_firewall.sh"
+      "script": "{{template_dir}}/../../provisioners/scripts/linux/open_confluent_firewall.sh"
     },
     {
       "type": "shell",
-      "script": "provisioners/scripts/linux/redhat/install_awscli.sh"
+      "script": "{{template_dir}}/../../provisioners/scripts/linux/redhat/install_awscli.sh"
     },
     {
       "type": "ansible-local",
-      "playbook_file": "provisioners/ansible/playbooks/cloudwatch-confluent.yml",
-      "role_paths": ["provisioners/ansible/roles/cloudwatch-logs"]
+      "playbook_file": "{{template_dir}}/../../provisioners/ansible/playbooks/cloudwatch-confluent.yml",
+      "role_paths": ["{{template_dir}}/../../provisioners/ansible/roles/cloudwatch-logs"]
     }
   ]
 }
