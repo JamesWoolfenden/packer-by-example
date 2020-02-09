@@ -1,0 +1,48 @@
+{
+  "variables": {
+    "vpc_id": "",
+    "subnet_id": "",
+    "instance_type": "t2.micro",
+    "associate_public_ip_address": "false"
+  },
+  "builders": [
+    {
+      "name": "ubuntu-18.04",
+      "type": "amazon-ebs",
+      "region": "eu-west-1",
+      "vpc_id": "{{user `vpc_id`}}",
+      "subnet_id": "{{user `subnet_id`}}",
+      "associate_public_ip_address": "{{user `associate_public_ip_address`}}",
+      "source_ami_filter": {
+        "filters": {
+          "virtualization-type": "hvm",
+          "name": "ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-amd64-server-*",
+          "root-device-type": "ebs"
+        },
+        "owners": ["099720109477"],
+        "most_recent": true
+      },
+      "spot_price": "auto",
+      "instance_type": "t2.micro",
+      "ssh_username": "ubuntu",
+      "ami_name": "ubuntu-18.04-{{timestamp}}"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "script": "{{template_dir}}/../../provisioners/scripts/linux/ubuntu/install_ansible.sh"
+    },
+    {
+      "type": "shell",
+      "script": "{{template_dir}}/../../provisioners/scripts/linux/ubuntu/install_aws_ssm.sh"
+    },
+    {
+      "type": "ansible-local",
+      "playbook_file": "{{template_dir}}/../../provisioners/ansible/playbooks/cloudwatch-metrics.yml",
+      "role_paths": [
+        "{{template_dir}}/../../provisioners/ansible/roles/cloudwatch-metrics"
+      ]
+    }
+  ]
+}
