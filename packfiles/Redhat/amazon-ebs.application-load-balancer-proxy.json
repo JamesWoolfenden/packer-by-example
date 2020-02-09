@@ -2,11 +2,50 @@
   "variables": {
     "aws_access_key": "{{env `AWS_ACCESS_KEY_ID`}}",
     "aws_secret_key": "{{env `AWS_SECRET_ACCESS_KEY`}}",
-    "aws_session_token": "{{env `AWS_SESSION_TOKEN`}}",
+    "aws_session_token": "{{ env `AWS_SESSION_TOKEN`}}",
+    "aws_region": "{{env `AWS_REGION` }}",
     "build_number": "{{env `BUILD_NUMBER`}}",
-    "aws-region": "{{env `AWS_REGION`}}",
     "instance_type": "t2.micro"
   },
+  "builders": [
+    {
+      "type": "amazon-ebs",
+      "access_key": "{{ user `aws_access_key` }}",
+      "secret_key": "{{ user `aws_secret_key` }}",
+      "token": "{{ user `aws_session_token` }}",
+      "region": "{{ user `aws_region` }}",
+      "source_ami_filter": {
+        "filters": {
+          "virtualization-type": "hvm",
+          "name": "nginx-plus-ami-rhel7-hvm-*",
+          "root-device-type": "ebs"
+        },
+        "owners": ["679593333241"],
+        "most_recent": true
+      },
+      "ami_description": "Application Load Balancer Proxy AMI",
+      "ami_name": "ALBP-v{{user `build_number`}}-{{timestamp}}-AMI",
+      "ami_virtualization_type": "hvm",
+      "associate_public_ip_address": true,
+      "instance_type": "{{ user `instance_type` }}",
+      "spot_price": "auto",
+      "ssh_username": "ec2-user",
+      "subnet_id": "{{user `subnet_id`}}",
+      "temporary_key_pair_name": "albp-packer-{{timestamp}}",
+      "vpc_id": "{{user `vpc_id`}}",
+      "run_tags": {
+        "Name": "albp-packer",
+        "Application": "base",
+        "Project": "Project"
+      },
+      "tags": {
+        "OS_Version": "RedHat7",
+        "Version": "{{user `build_number`}}",
+        "Application": "ALBP",
+        "Runner": "EC2"
+      }
+    }
+  ],
   "provisioners": [
     {
       "type": "shell",
@@ -34,45 +73,6 @@
         "{{template_dir}}/../../provisioners/ansible/roles/cloudwatch-metrics"
       ]
     }
-  ],
-  "builders": [
-    {
-      "type": "amazon-ebs",
-      "access_key": "{{user `aws_access_key`}}",
-      "secret_key": "{{user `aws_secret_key`}}",
-      "token": "{{user `aws_session_token`}}",
-      "region": "{{user `aws_region`}}",
-      "source_ami_filter": {
-        "filters": {
-          "virtualization-type": "hvm",
-          "name": "nginx-plus-ami-rhel7-hvm-*",
-          "root-device-type": "ebs"
-        },
-        "owners": ["679593333241"],
-        "most_recent": true
-      },
-      "instance_type": "{{ user `instance_type` }}",
-      "ssh_username": "ec2-user",
-      "ami_name": "ALBP-v{{user `build_number`}}-{{timestamp}}-AMI",
-      "ami_description": "Application Load Balancer Proxy AMI",
-      "ami_virtualization_type": "hvm",
-      "ami_users": "{{ user `ami_users` }}",
-      "temporary_key_pair_name": "albp-packer-{{timestamp}}",
-      "vpc_id": "{{user `vpc_id`}}",
-      "subnet_id": "{{user `subnet_id`}}",
-      "spot_price": "auto",
-      "associate_public_ip_address": true,
-      "run_tags": {
-        "Name": "albp-packer",
-        "Application": "base",
-        "Project": "Project"
-      },
-      "tags": {
-        "OS_Version": "RedHat7",
-        "Version": "{{user `build_number`}}",
-        "Application": "ALBP",
-        "Runner": "EC2"
-      }
-    }
   ]
+
 }

@@ -1,39 +1,12 @@
 {
   "variables": {
-    "aws_access_key": "{{env `AWS_ACCESS_KEY_ID`}}",
-    "aws_secret_key": "{{env `AWS_SECRET_ACCESS_KEY`}}",
-    "aws_session_token": "{{env `AWS_SESSION_TOKEN`}}",
-    "build_number": "{{env `BUILD_NUMBER`}}",
-    "aws-region": "{{env `AWS_REGION`}}"
+    "aws_access_key": "{{ env `AWS_ACCESS_KEY_ID` }}",
+    "aws_secret_key": "{{ env `AWS_SECRET_ACCESS_KEY` }}",
+    "aws_session_token": "{{ env `AWS_SESSION_TOKEN` }}",
+    "aws_region": "{{ env `AWS_REGION` }}",
+    "build_number": "{{ env `BUILD_NUMBER` }}",
+    "instance_type": "t2.micro"
   },
-  "provisioners": [
-    {
-      "type": "ansible-local",
-      "playbook_file": "provisioners/ansible/playbooks/confluent.yml",
-      "role_paths": [
-        "provisioners/ansible/roles/openjdk",
-        "provisioners/ansible/roles/confluent.common"
-      ]
-    },
-    {
-      "type": "ansible-local",
-      "playbook_file": "provisioners/ansible/playbooks/confluent-connect-distributed.yml",
-      "role_paths": ["provisioners/ansible/roles/confluent.connect-distributed"]
-    },
-    {
-      "type": "shell",
-      "script": "provisioners/scripts/linux/open_confluent_firewall.sh"
-    },
-    {
-      "type": "shell",
-      "script": "provisioners/scripts/linux/redhat/install_awscli.sh"
-    },
-    {
-      "type": "ansible-local",
-      "playbook_file": "provisioners/ansible/playbooks/cloudwatch-confluent.yml",
-      "role_paths": ["provisioners/ansible/roles/cloudwatch-logs"]
-    }
-  ],
   "builders": [
     {
       "type": "amazon-ebs",
@@ -50,19 +23,19 @@
         "owners": ["self"],
         "most_recent": true
       },
+      "ami_description": "Confluent connect",
+      "ami_name": "confluent-connect-v{{user `build_number`}}-{{timestamp}}",
+      "ami_virtualization_type": "hvm",
+      "associate_public_ip_address": true,
       "instance_type": "{{ user `instance_type` }}",
       "ssh_username": "ec2-user",
-      "ami_name": "confluent-connect-v{{user `build_number`}}-{{timestamp}}",
-      "ami_description": "Confluent connect",
-      "ami_virtualization_type": "hvm",
-      "ami_users": "{{ user `ami_users` }}",
+      "subnet_id": "{{user `subnet_id`}}",
       "temporary_key_pair_name": "confluent-connect-packer-{{timestamp}}",
       "vpc_id": "{{user `vpc_id`}}",
-      "subnet_id": "{{user `subnet_id`}}",
-      "associate_public_ip_address": true,
       "run_tags": {
         "Name": "confluent-connect",
-        "Application": "Connect"
+        "Application": "Connect",
+        "OS_Version": "RedHat7.6"
       },
       "tags": {
         "OS_Version": "RedHat7",
@@ -70,6 +43,34 @@
         "Application": "Confluent Connect",
         "Runner": "EC2"
       }
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "ansible-local",
+      "playbook_file": "provisioners/ansible/playbooks/confluent.yml",
+      "role_paths": [
+        "provisioners/ansible/roles/openjdk",
+        "provisioners/ansible/roles/confluent.common"
+      ]
+    },
+    {
+      "type": "ansible-local",
+      "playbook_file": "provisioners/ansible/playbooks/confluent-connect-distributed.yml",
+      "role_paths": ["provisioners/ansible/roles/confluent.connect-distributed"]
+    },
+    {
+      "type": "shell",
+      "script": "provisioners/scripts/linux/redhat/open_confluent_firewall.sh"
+    },
+    {
+      "type": "shell",
+      "script": "provisioners/scripts/linux/redhat/install_awscli.sh"
+    },
+    {
+      "type": "ansible-local",
+      "playbook_file": "provisioners/ansible/playbooks/cloudwatch-confluent.yml",
+      "role_paths": ["provisioners/ansible/roles/cloudwatch-logs"]
     }
   ]
 }
