@@ -58,7 +58,9 @@
     {
       "type": "ansible-local",
       "playbook_file": "{{template_dir}}/../../provisioners/ansible/playbooks/confluent-schema.yml",
-      "role_paths": ["{{template_dir}}/../../provisioners/ansible/roles/confluent.schema-registry"]
+      "role_paths": [
+        "{{template_dir}}/../../provisioners/ansible/roles/confluent.schema-registry"
+      ]
     },
     {
       "type": "shell",
@@ -71,7 +73,9 @@
     {
       "type": "ansible-local",
       "playbook_file": "{{template_dir}}/../../provisioners/ansible/playbooks/cloudwatch-confluent.yml",
-      "role_paths": ["{{template_dir}}/../../provisioners/ansible/roles/cloudwatch-logs"]
+      "role_paths": [
+        "{{template_dir}}/../../provisioners/ansible/roles/cloudwatch-logs"
+      ]
     }
   ]
 }

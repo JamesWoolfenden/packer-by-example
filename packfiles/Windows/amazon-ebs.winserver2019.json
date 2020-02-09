@@ -7,8 +7,8 @@
     "winrm_password": "MyF@v0uriteG@me5",
     "aws_region": "{{env `AWS_REGION`}}",
     "instance_type": "t3.large",
-    "subnet_id":"",
-    "vpc_id":""
+    "subnet_id": "",
+    "vpc_id": ""
   },
   "builders": [
     {
@@ -33,7 +33,7 @@
       "instance_type": "{{ user `instance_type` }}",
       "user_data_file": "{{template_dir}}/bootstrap_win.txt",
       "communicator": "winrm",
-      "spot_price":"auto",
+      "spot_price": "auto",
       "winrm_username": "Administrator",
       "winrm_timeout": "10m",
       "winrm_password": "{{ user `winrm_password` }}",
@@ -58,7 +58,7 @@
       "inline": [
         "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12",
         "iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))|out-null"
-	]
+      ]
     },
     {
       "type": "powershell",

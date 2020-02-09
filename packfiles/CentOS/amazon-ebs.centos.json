@@ -45,7 +45,7 @@
       }
     }
   ],
- "provisioners": [
+  "provisioners": [
     {
       "type": "shell",
       "script": "{{template_dir}}/../../provisioners/scripts/linux/redhat/install_ansible.sh"

@@ -58,7 +58,9 @@
     {
       "type": "ansible-local",
       "playbook_file": "{{template_dir}}/../../provisioners/ansible/playbooks/jenkins-master.yml",
-      "role_paths": ["{{template_dir}}/../../provisioners/ansible/roles/cloudwatch-logs"]
+      "role_paths": [
+        "{{template_dir}}/../../provisioners/ansible/roles/cloudwatch-logs"
+      ]
     }
   ]
 }

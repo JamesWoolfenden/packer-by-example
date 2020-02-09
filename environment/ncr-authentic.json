@@ -1,7 +1,7 @@
 {
-    "instance_type":  "t2.micro",
-    "vpc_id":  "vpc-0b4b473e65c6cec8b",
-    "subnet_id":  "subnet-051878b5dd8458dcb",
-    "ami_users":  "151017656270",
-    "aws_region":  "us-west-2"
+  "instance_type": "t2.micro",
+  "vpc_id": "vpc-0b4b473e65c6cec8b",
+  "subnet_id": "subnet-051878b5dd8458dcb",
+  "ami_users": "151017656270",
+  "aws_region": "us-west-2"
 }
