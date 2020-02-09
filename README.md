@@ -4,9 +4,9 @@
 
 By [James Woolfenden](https://www.linkedin.com/in/jameswoolfenden/)
 
-Packer-by-example is a collection of Scripts, Ansible, Makefiles and Packer files to building images in the Public Cloud.
+Packer-by-example is a collection of Scripts, Ansible, Makefiles and Packer files to help build images in the Public Cloud.
 It's designed to work with CI/CD systems such as Travis CI, CircleCI and Jenkins, or even at your console.
-
+There many different examples for different type of Linux and Windows,
 ---
 
 It's 100% Open Source and licensed under the [APACHE2](LICENSE).
@@ -23,6 +23,7 @@ Here's how to get started...
 
 ### Usage
 
+You can run packer directly or if its HCL2 a folder, otherwise use the wrapper scripts supplied.
 To run:
 
 ```bash tab="*nix"
@@ -59,8 +60,9 @@ Packer has started adding in support for HCL2, this means that Packer is startin
 I have included a working example in the HCL2 folder.
 
 ```CLI
- packer build .\awswin2k19.pkr.hcl
+ packer build ./hcl2/ubuntu/
 ```
+With HCL2 You can separate out builders from the provisioners.
 
 ## Troubleshooting
 
@@ -69,6 +71,7 @@ Packer is a tidy tool and to investigate failures you need to tell it not to be.
 ### Common issue: SSH is blocked
 
 Some Environments lock down inbound and outbound SSH connections by blocking port 22, 3389.
+Check you're not making your AMIS in private subnet and waiting pointlessly.
 
 ## Help
 
