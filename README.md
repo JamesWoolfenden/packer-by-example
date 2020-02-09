@@ -6,7 +6,7 @@ By [James Woolfenden](https://www.linkedin.com/in/jameswoolfenden/)
 
 Packer-by-example is a collection of Scripts, Ansible, Makefiles and Packer files to help build images in the Public Cloud.
 It's designed to work with CI/CD systems such as Travis CI, CircleCI and Jenkins, or even at your console.
-There many different examples for different type of Linux and Windows,
+There many different examples for different types of Linux and Windows,
 ---
 
 It's 100% Open Source and licensed under the [APACHE2](LICENSE).
