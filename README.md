@@ -68,7 +68,7 @@ Packer is a tidy tool and to investigate failures you need to tell it not to be.
 
 ### Common issue: SSH is blocked
 
-Some Environments lock down inbound and outbound SSH connections by blocking port 22.
+Some Environments lock down inbound and outbound SSH connections by blocking port 22, 3389.
 
 ## Help
 
