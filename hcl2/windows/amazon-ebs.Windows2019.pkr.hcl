@@ -4,7 +4,7 @@ source "amazon-ebs" "Windows2019" {
       associate_public_ip_address="true"
       communicator= "winrm"
       instance_type= "t2.micro"
-      region= ""
+      region= var.region
       source_ami_filter {
         filters {
           virtualization-type= "hvm"
@@ -16,10 +16,10 @@ source "amazon-ebs" "Windows2019" {
       }
       #using spot market as cheaper
       spot_price="auto"
-      subnet_id=""
+      subnet_id=var.subnet_id
       user_data_file= "./HCL2/bootstrap_win.txt"
       #if empty it uses the default vpc, COMMENTS!!!!
-      vpc_id= ""
+      vpc_id= var.vpc_id
       winrm_password="SuperS3cr3t!!!!"
       winrm_timeout= "10m"
       winrm_username= "Administrator"

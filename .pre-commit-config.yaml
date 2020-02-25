@@ -16,16 +16,16 @@ repos:
       - id: forbid-tabs
         exclude_types: [python, javascript, dtd, markdown, makefile, xml]
         exclude: binary|\.bin$
-  - repo: git://github.com/kintoandar/pre-commit.git
-    rev: v2.1.0
+  - repo: git://github.com/jameswoolfenden/pre-commit.git
+    rev: 0.1.17
     hooks:
-      - id: terraform_fmt
+      - id: terraform-fmt
   - repo: git://github.com/detailyang/pre-commit-shell
     rev: 1.0.5
     hooks:
       - id: shell-lint
   - repo: git://github.com/igorshubovych/markdownlint-cli
-    rev: v0.21.0
+    rev: v0.22.0
     hooks:
       - id: markdownlint
   - repo: git://github.com/prettier/prettier

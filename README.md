@@ -1,12 +1,14 @@
 [![Slalom][logo]](https://slalom.com)
 
-# Packer by Example [![Latest Release](https://img.shields.io/github/v/tag/JamesWoolfenden/packer-by-example.svg)](https://github.com/JamesWoolfenden/packer-by-example)
+# Packer by Example
+
+[![Latest Release](https://img.shields.io/github/v/tag/JamesWoolfenden/packer-by-example.svg)](https://github.com/JamesWoolfenden/packer-by-example)
 
 By [James Woolfenden](https://www.linkedin.com/in/jameswoolfenden/)
 
 Packer-by-example is a collection of Scripts, Ansible, Makefiles and Packer files to help build images in the Public Cloud.
 It's designed to work with CI/CD systems such as Travis CI, CircleCI and Jenkins, or even at your console.
-There many different examples for different type of Linux and Windows,
+There many different examples for different type of Linux and Windows.
 ---
 
 It's 100% Open Source and licensed under the [APACHE2](LICENSE).
@@ -62,7 +64,8 @@ I have included a working example in the HCL2 folder.
 ```CLI
  packer build ./hcl2/ubuntu/
 ```
-With HCL2 You can separate out builders from the provisioners.
+
+With HCL2 You can separate out builders from the Provisioners.
 
 ## Troubleshooting
 
@@ -71,7 +74,7 @@ Packer is a tidy tool and to investigate failures you need to tell it not to be.
 ### Common issue: SSH is blocked
 
 Some Environments lock down inbound and outbound SSH connections by blocking port 22, 3389.
-Check you're not making your AMIS in private subnet and waiting pointlessly.
+Check you're not making your AMI'S in private subnet and waiting pointlessly.
 
 ## Help
 
@@ -114,17 +117,15 @@ under the License.
 
 ### Contributors
 
-  [![James Woolfenden][jameswoolfenden_avatar]][jameswoolfenden_homepage]<br/>[James Woolfenden][jameswoolfenden_homepage] |
+[![James Woolfenden][jameswoolfenden_avatar]][jameswoolfenden_homepage]<br/>[James Woolfenden][jameswoolfenden_homepage] |
 
-  [jameswoolfenden_homepage]: https://github.com/jameswoolfenden
-  [jameswoolfenden_avatar]: https://github.com/jameswoolfenden.png?size=150
-
+[jameswoolfenden_homepage]: https://github.com/jameswoolfenden
+[jameswoolfenden_avatar]: https://github.com/jameswoolfenden.png?size=150
 [logo]: https://gist.githubusercontent.com/JamesWoolfenden/5c457434351e9fe732ca22b78fdd7d5e/raw/15933294ae2b00f5dba6557d2be88f4b4da21201/slalom-logo.png
 [website]: https://slalom.com
 [github]: https://github.com/jameswoolfenden
 [linkedin]: https://www.linkedin.com/company/slalom-consulting/
 [twitter]: https://twitter.com/Slalom
-
 [share_twitter]: https://twitter.com/intent/tweet/?text=packer-by-example&url=https://github.com/JamesWoolfenden/packer-by-example
 [share_linkedin]: https://www.linkedin.com/shareArticle?mini=true&title=packer-by-example&url=https://github.com/JamesWoolfenden/packer-by-example
 [share_reddit]: https://reddit.com/submit/?url=https://github.com/JamesWoolfenden/packer-by-example

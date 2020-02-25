@@ -5,7 +5,7 @@ source "amazon-ebs" "base1604" {
   ami_virtualization_type= "hvm"
   #associate_public_ip_address= true
   instance_type= "t2.micro"
-  region= ""
+  region= var.region
   run_tags {
     Name= "ubuntu-base-packer"
     Application= "base"
@@ -13,7 +13,7 @@ source "amazon-ebs" "base1604" {
   }
   spot_price= "auto"
   ssh_username= "ubuntu"
-  subnet_id= ""
+  subnet_id= var.subnet_id
   source_ami_filter {
     filters {
       virtualization-type= "hvm"
@@ -24,5 +24,5 @@ source "amazon-ebs" "base1604" {
     owners= ["099720109477"]
   }
   temporary_key_pair_name= "ubuntu-packer-{{timestamp}}"
-  vpc_id= ""
+  vpc_id= var.vpc_id
 }
