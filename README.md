@@ -25,7 +25,7 @@ Here's how to get started...
 
 ### Usage
 
-You can run packer directly or if its HCL2 a folder, otherwise use the wrapper scripts supplied.
+You can run packer directly or if it's HCL2, a folder, otherwise you can use the build wrapper scripts supplied.
 To run:
 
 ```bash tab="*nix"
@@ -38,21 +38,21 @@ Or on Windows:
  .\build.ps1 -packfile .\packfiles\CentOS\base-aws.json -environment .\environment\personal-jgw.json
 ```
 
-The environment files hold variables and the packfiles are the packer **json** templates. I'd prefer not to need the variable files but some values must be supplied.
+The environment files hold variables and the packfiles are the packer **json** templates. I'd prefer not to need the variable files at all but some values must be supplied.
 
-Packer can be used to make an AMI that is prebuilt for EC2 with support for Cloudwatch Logs and Metrics:
+Packer can be used to make an AMI that is pre-built for EC2 with support for Cloudwatch Logs and Metrics:
 
 <img src="https://gist.githubusercontent.com/JamesWoolfenden/aec6aa174646655fb0374be66b899327/raw/b4cc4244068fa95c9bf9ce432c2531b8c5f9acde/termtosvg_0_bpl_ol.svg?sanitize=true">
 
 This Repository contains a number of other examples for using Packer, with software installed for different OS and CloudPlatforms, ready to be configured at launch time.
 
-Instructions for setting up each Cloud provider are here:
+Instructions for setting up each authenticatiom for Cloud provider are here:
 
 - [AWS](docs/AWS.MD)
 - [GCP](docs/GCP.MD)
 - [AZURE](docs/AZURE.MD)
 
-There are several different examples, for Windows and different Linux distributions, and different versions of each.
+There are examples for Windows and different Linux distributions, and different versions of each.
 The "packfiles" have examples of using basic features of script or Ansible providers to configure your images, as well as a method for versioning the AMI's.
 
 ## **NEW HCL2**
