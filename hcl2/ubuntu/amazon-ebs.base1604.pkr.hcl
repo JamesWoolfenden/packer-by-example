@@ -1,10 +1,10 @@
 source "amazon-ebs" "base1604" {
   ami_description= "ubuntu base 16.04"
   ami_name= "ubuntu-16.04-BASE-v1-{{timestamp}}-AMI"
-  ami_users= [""]
+  ami_users      = var.ami_users
   ami_virtualization_type= "hvm"
-  #associate_public_ip_address= true
-  instance_type= "t2.micro"
+  associate_public_ip_address= var.associate_public_ip_address
+  instance_type  = var.instance_type
   region= var.region
   run_tags {
     Name= "ubuntu-base-packer"
@@ -25,4 +25,10 @@ source "amazon-ebs" "base1604" {
   }
   temporary_key_pair_name= "ubuntu-packer-{{timestamp}}"
   vpc_id= var.vpc_id
+  tags {
+    OS_Version= "Ubuntu 16.04"
+    Version= var.BUILD_NUMBER
+    Application= "Ubuntu Image"
+    Runner= "EC2"
+  }
 }

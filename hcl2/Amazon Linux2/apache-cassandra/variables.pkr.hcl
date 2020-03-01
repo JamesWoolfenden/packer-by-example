@@ -33,3 +33,8 @@ variable "associate_public_ip_address" {
   type=bool
   default=true
 }
+
+variable "ssh_interface" {
+  type   = string
+  default= "public_ip"
+}
