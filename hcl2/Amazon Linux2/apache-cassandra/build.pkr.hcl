@@ -5,7 +5,7 @@ sources=[
 
   provisioner "shell" {
      scripts=[
-       "../../provisioners/scripts/linux/install-cassandra.sh"
+       "{{ template_dir }}install-cassandra.sh"
        ]
     }
 }
