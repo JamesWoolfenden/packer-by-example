@@ -1,5 +1,3 @@
-[![Slalom][logo]](https://slalom.com)
-
 # Packer by Example
 
 [![Latest Release](https://img.shields.io/github/v/tag/JamesWoolfenden/packer-by-example.svg)](https://github.com/JamesWoolfenden/packer-by-example)
@@ -121,11 +119,9 @@ under the License.
 
 [jameswoolfenden_homepage]: https://github.com/jameswoolfenden
 [jameswoolfenden_avatar]: https://github.com/jameswoolfenden.png?size=150
-[logo]: https://gist.githubusercontent.com/JamesWoolfenden/5c457434351e9fe732ca22b78fdd7d5e/raw/15933294ae2b00f5dba6557d2be88f4b4da21201/slalom-logo.png
-[website]: https://slalom.com
 [github]: https://github.com/jameswoolfenden
-[linkedin]: https://www.linkedin.com/company/slalom-consulting/
-[twitter]: https://twitter.com/Slalom
+[linkedin]: https://www.linkedin.com/in/jameswoolfenden/
+[twitter]: https://twitter.com/jimwoolfenden
 [share_twitter]: https://twitter.com/intent/tweet/?text=packer-by-example&url=https://github.com/JamesWoolfenden/packer-by-example
 [share_linkedin]: https://www.linkedin.com/shareArticle?mini=true&title=packer-by-example&url=https://github.com/JamesWoolfenden/packer-by-example
 [share_reddit]: https://reddit.com/submit/?url=https://github.com/JamesWoolfenden/packer-by-example
