@@ -88,7 +88,7 @@ Please use the [issue tracker](https://github.com/JamesWoolfenden/packer-by-exam
 
 ## Copyrights
 
-Copyright © 2019-2020 [Slalom, LLC](https://slalom.com)
+Copyright © 2019-2021 James Woolfenden
 
 ## License
 
