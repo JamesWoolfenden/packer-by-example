@@ -11,7 +11,7 @@ source "amazon-ebs" "base2210" {
     Application = "base"
     OS          = "Ubuntu 22.10"
   }
- 
+
   ssh_username = "ubuntu"
   subnet_id    = var.subnet_id
   source_ami_filter {

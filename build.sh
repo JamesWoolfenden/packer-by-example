@@ -18,18 +18,16 @@ if [ "$#" -lt 4 ]; then
     usage;
   fi
 
-while getopts p:e:d: option
+while getopts p:e:d:h option
 do
  case "${option}"
  in
  p) packfile=${OPTARG};;
  e) environment=${OPTARG};;
  d) debug=${6:-false};;
- -h|--help) usage
-            exit ;;
-  --) shift
-      break ;;
-  *) usage ;;
+ h) usage
+    exit ;;
+ *) usage ;;
  esac
 done
 

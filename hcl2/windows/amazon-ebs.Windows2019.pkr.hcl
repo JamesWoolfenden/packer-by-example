@@ -20,7 +20,7 @@ source "amazon-ebs" "Windows2019" {
   user_data_file = "./HCL2/bootstrap_win.txt"
   #if empty it uses the default vpc, COMMENTS!!!!
   vpc_id         = var.vpc_id
-  winrm_password = "SuperS3cr3t!!!!"
+  winrm_password = var.winrm_password
   winrm_timeout  = "10m"
   winrm_username = "Administrator"
 }

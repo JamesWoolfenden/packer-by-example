@@ -1,0 +1,38 @@
+---
+# Ansible-lint configuration
+# See https://ansible.readthedocs.io/projects/lint/configuring/
+
+# Skip rules for legacy Ansible code - this is a Packer repo with legacy/third-party roles
+skip_list:
+  - fqcn[action-core]        # Skip FQCN warnings for builtin modules (400+ violations)
+  - fqcn[action]             # Skip FQCN warnings for action modules
+  - name[casing]             # Skip task name casing (62 violations)
+  - yaml[octal-values]       # Skip octal file permissions (47 violations)
+  - yaml[truthy]             # Skip truthy value formatting (38 violations)
+  - yaml[comments]           # Skip comment formatting (36 violations)
+  - var-naming[no-role-prefix]  # Skip variable naming (19 violations)
+  - risky-file-permissions   # Skip file permissions warnings (7 violations)
+  - no-changed-when          # Skip changed_when warnings (7 violations)
+  - command-instead-of-shell # Skip shell vs command (5 violations)
+  - schema[meta]             # Skip meta schema issues (9 violations)
+  - jinja[spacing]           # Skip Jinja2 spacing recommendations
+  - package-latest           # Skip latest package version warnings
+  - meta-incorrect           # Skip metadata issues (license, etc)
+  - meta-no-tags             # Skip meta tag formatting issues
+
+# Exclude paths with missing dependencies or syntax issues (roles installed at runtime)
+exclude_paths:
+  - provisioners/ansible/roles/sudoers/test/  # Test files with missing dependencies
+  - provisioners/ansible/roles/dhoeric.aws-ssm/tests/  # Test files with missing dependencies
+  - provisioners/ansible/roles/dhoeric.aws-ssm/tasks/main.yml  # Uses deprecated include
+  - provisioners/ansible/roles/ssmagent/tests/  # Test files with missing dependencies
+  - provisioners/ansible/roles/devoinc.openjdk/molecule/  # Molecule tests with missing dependencies
+  - provisioners/ansible/roles/oracle_sdk/tasks/main.yml  # Uses deprecated include
+  - provisioners/ansible/playbooks/  # Playbooks reference roles installed at runtime
+
+# Warn on other issues but don't fail
+warn_list:
+  - experimental  # Warn on experimental features
+
+# Enable progressive mode to allow fixing issues incrementally
+progressive: false

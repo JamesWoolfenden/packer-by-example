@@ -1,0 +1,15 @@
+---
+# Ansible Galaxy role dependencies
+# Install with: ansible-galaxy install -r requirements.yml
+
+roles:
+  - name: dhoeric.aws-ssm
+    version: "1.0.0"
+    src: https://galaxy.ansible.com/dhoeric/aws-ssm
+
+  - name: devoinc.openjdk
+    version: "latest"
+    src: https://galaxy.ansible.com/devoinc/openjdk
+# Note: Confluent roles (confluent.*) are custom roles included in this repository
+# and don't need to be installed from Galaxy. They are located in:
+# provisioners/ansible/roles/confluent.*

@@ -31,7 +31,7 @@ Enable it by visiting
 If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry, accessNotConfigured
 ```
 
-## First time enablement of Google APIs**
+## First time enablement of Google APIs\*\*
 
 ### Solution 1 Enable via http
 

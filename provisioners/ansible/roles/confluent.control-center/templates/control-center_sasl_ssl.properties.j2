@@ -22,7 +22,7 @@ confluent.controlcenter.rest.ssl.key.password=REPLACEME
 
 
 #SASL additions
-confluent.controlcenter.streams.sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="client" password="client-secret";
+confluent.controlcenter.streams.sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="client" password="client-secret";  # pragma: allowlist secret
 confluent.controlcenter.streams.security.protocol=SASL_SSL
 confluent.controlcenter.streams.sasl.mechanism=GSSAPI
 confluent.controlcenter.rest.security.protocol=SASL_SSL

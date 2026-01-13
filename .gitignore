@@ -21,3 +21,5 @@ personal*
 aws-230-300-2*
 *.orig
 Personal*
+__pycache__/
+node_modules/

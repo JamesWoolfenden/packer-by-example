@@ -79,10 +79,10 @@ sasl.kerberos.service.name=kafka
 
 #SSL additions
 ssl.truststore.location=/var/ssl/private/kafka.client.truststore.jks
-ssl.truststore.password=REPLACEME
+ssl.truststore.password=REPLACEME  # pragma: allowlist secret
 ssl.keystore.location=/var/ssl/private/kafka.client.keystore.jks
-ssl.keystore.password=REPLACEME
-ssl.key.password=REPLACEME
+ssl.keystore.password=REPLACEME  # pragma: allowlist secret
+ssl.key.password=REPLACEME  # pragma: allowlist secret
 
 #Listners change for connect hosts, please change the hostname for different connect node.
 listeners=https://REPLACEMEWITHSED:8083

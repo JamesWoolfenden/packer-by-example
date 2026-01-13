@@ -4,7 +4,7 @@ set -e
 ## This is an example setup script that you would encapsulate the installation
 # What version of avm setup to use
 echo "Setting up Ansible Version Manager"
-AVM_VERSION="v1.0.0-rc.8"
+_AVM_VERSION="v1.0.0-rc.8"
 ## Install Ansible 1.9.6 using pip and label it 'v1.9'
 export ANSIBLE_VERSIONS_0="1.9.6"
 export INSTALL_TYPE_0="pip"
@@ -18,7 +18,7 @@ export ANSIBLE_VERSIONS_2="2.3.1.0"
 export INSTALL_TYPE_2="pip"
 export ANSIBLE_LABEL_2="v2.3"
 # Whats the default version
-ANSIBLE_DEFAULT_VERSION="v2.3"
+_ANSIBLE_DEFAULT_VERSION="v2.3"
 
 ## Create a temp dir to download avm
 avm_dir="$(mktemp -d 2> /dev/null || mktemp -d -t 'mytmpdir')"

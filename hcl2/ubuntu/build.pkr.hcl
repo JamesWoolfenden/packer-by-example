@@ -1,6 +1,6 @@
 build {
   sources = [
-    "source.amazon-ebs.base1604"
+    "source.amazon-ebs.base2204"
   ]
 
   provisioner "shell" {

@@ -30,8 +30,10 @@ az ad sp create-for-rbac -n "Packer" --role contributor \
 
 Then add these to your shell:
 
+<!-- pragma: allowlist secret -->
+
 ```bash
-export ARM_CLIENT_SECRET="xxxxxx-xxxx-xxxx-xxxx-xxxxxxx"
+export ARM_CLIENT_SECRET="xxxxxx-xxxx-xxxx-xxxx-xxxxxxx"  # pragma: allowlist secret
 export ARM_CLIENT_ID="xxxxxx-xxxx-xxxx-xxxx-xxxxxxx"
 export ARM_SUBSCRIPTION_ID="xxxxxx-xxxx-xxxx-xxxx-xxxxxxx"
 export ARM_TENANT_ID="xxxxxx-xxxx-xxxx-xxxx-xxxxxxx"

@@ -23,11 +23,11 @@ NAME="${4:-$LOGNAME@$(hostname -s)}"
 ARN="arn:aws:iam::${ACCOUNT}:role/$ROLE"
 ECHO "ARN: $ARN"
 
-KST=($(aws sts assume-role --role-arn "$ARN" \
+IFS=$'\t' read -r -a KST < <(aws sts assume-role --role-arn "$ARN" \
                           --role-session-name "$NAME" \
                           --duration-seconds "$DURATION" \
                           --query "[Credentials.AccessKeyId,Credentials.SecretAccessKey,Credentials.SessionToken]" \
-                          --output text))
+                          --output text)
 
 echo "export AWS_DEFAULT_REGION=\"eu-west-2\""
 echo "export AWS_ACCESS_KEY_ID=\"${KST[0]}\""

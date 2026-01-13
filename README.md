@@ -6,8 +6,7 @@ By [James Woolfenden](https://www.linkedin.com/in/jameswoolfenden/)
 
 Packer-by-example is a collection of Scripts, Ansible, Makefiles and Packer files to help build images in the Public Cloud.
 It's designed to work with CI/CD systems such as Travis CI, CircleCI and Jenkins, or even at your console.
-There many different examples for different type of Linux and Windows.
----
+There many different examples for different type of Linux and Windows
 
 It's 100% Open Source and licensed under the [APACHE2](LICENSE).
 
@@ -40,7 +39,7 @@ The environment files hold variables and the packfiles are the packer **json** t
 
 Packer can be used to make an AMI that is pre-built for EC2 with support for Cloudwatch Logs and Metrics:
 
-<img src="https://gist.githubusercontent.com/JamesWoolfenden/aec6aa174646655fb0374be66b899327/raw/b4cc4244068fa95c9bf9ce432c2531b8c5f9acde/termtosvg_0_bpl_ol.svg?sanitize=true">
+<img src="https://gist.githubusercontent.com/JamesWoolfenden/aec6aa174646655fb0374be66b899327/raw/b4cc4244068fa95c9bf9ce432c2531b8c5f9acde/termtosvg_0_bpl_ol.svg?sanitize=true" alt="Packer build demonstration">
 
 This Repository contains a number of other examples for using Packer, with software installed for different OS and CloudPlatforms, ready to be configured at launch time.
 
@@ -119,11 +118,3 @@ under the License.
 
 [jameswoolfenden_homepage]: https://github.com/jameswoolfenden
 [jameswoolfenden_avatar]: https://github.com/jameswoolfenden.png?size=150
-[github]: https://github.com/jameswoolfenden
-[linkedin]: https://www.linkedin.com/in/jameswoolfenden/
-[twitter]: https://twitter.com/jimwoolfenden
-[share_twitter]: https://twitter.com/intent/tweet/?text=packer-by-example&url=https://github.com/JamesWoolfenden/packer-by-example
-[share_linkedin]: https://www.linkedin.com/shareArticle?mini=true&title=packer-by-example&url=https://github.com/JamesWoolfenden/packer-by-example
-[share_reddit]: https://reddit.com/submit/?url=https://github.com/JamesWoolfenden/packer-by-example
-[share_facebook]: https://facebook.com/sharer/sharer.php?u=https://github.com/JamesWoolfenden/packer-by-example
-[share_email]: mailto:?subject=packer-by-example&body=https://github.com/JamesWoolfenden/packer-by-example

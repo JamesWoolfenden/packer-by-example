@@ -12,9 +12,9 @@ Requires ec2_metadata_facts.
 
 | Name        | Description                | Required | Default         |
 | ----------- | -------------------------- | -------- | --------------- |
-| file        | Full path to log file      | Yes      |
+| file        | Full path to log file      | Yes      | -               |
 | format      | Datetime format            | No       | None            |
-| group_name  | CloudWatch Log Group       | Yes      |
+| group_name  | CloudWatch Log Group       | Yes      | -               |
 | stream_name | CloudWatch Log Stream Name | No       | The instance id |
 
 `awslogs_loglevel`: maximal log level for the Log Agent's logs itself

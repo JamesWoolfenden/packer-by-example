@@ -12,3 +12,9 @@ variable "subnet_id" {
   description = "The Subnet to build the AMI inm that's ssh'able"
   type        = string
 }
+
+variable "winrm_password" {
+  description = "The WinRM password for Windows builds (set via WINRM_PASSWORD env var)"
+  type        = string
+  sensitive   = true
+}

@@ -20,6 +20,17 @@ node {
                 checkout scm
             }
             docker.image('jenkins').inside('-v /var/lib/jenkins/.ssh:/var/lib/jenkins/.ssh -v /etc/passwd:/etc/passwd') {
+                stage('Validate Packer Templates') {
+                    sh '''cat <<EOM
+                            -----------------------------------------------------------------------------------------------
+                            | Validate Packer Templates                                                                   |
+                            -----------------------------------------------------------------------------------------------
+                            EOM'''
+                    dir('packer') {
+                        sh "make validate"
+                    }
+                }
+
                 stage('Build AMI') {
                     sh '''cat <<EOM
                             -----------------------------------------------------------------------------------------------

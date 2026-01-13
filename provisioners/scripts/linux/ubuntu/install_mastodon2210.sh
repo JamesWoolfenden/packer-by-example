@@ -1,5 +1,5 @@
 #!/bin/bash -eux
-sudo apt update -y 
+sudo apt update -y
 sudo apt-get install -y curl
 curl -sL https://deb.nodesource.com/setup_18.x -o nodesource_setup.sh
 sudo bash nodesource_setup.sh
@@ -27,4 +27,4 @@ sudo -u mastodon git checkout v3.5.3
 sudo gem install bundler
 sudo -u mastodon bundle config deployment 'true'
 sudo -u mastodon bundle config without 'development test'
-sudo -u mastodon bundle install -j$(getconf _NPROCESSORS_ONLN)
+sudo -u mastodon bundle install -j"$(getconf _NPROCESSORS_ONLN)"

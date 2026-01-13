@@ -1,6 +1,6 @@
 <powershell>
-# Set administrator password
-net user Administrator MyF@v0uriteG@me5
+# Set administrator password (injected from Packer variable)
+net user Administrator {{ .WinRMPassword }}
 wmic useraccount where "name='Administrator'" set PasswordExpires=FALSE
 
 # First, make sure WinRM can't be connected to
