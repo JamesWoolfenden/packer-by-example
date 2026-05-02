@@ -3,7 +3,7 @@
 repos:
   # Standard pre-commit hooks
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v6.0.0 # Updated to latest
+    rev: 3e8a8703264a2f4a69428a0aa4dcb512790b2c8c # v6.0.0
     hooks:
       - id: trailing-whitespace
       - id: end-of-file-fixer
@@ -20,7 +20,7 @@ repos:
 
   # Secrets detection
   - repo: https://github.com/Yelp/detect-secrets
-    rev: v1.5.0
+    rev: 01886c8a910c64595c47f186ca1ffc0b77fa5458 # v1.5.0
     hooks:
       - id: detect-secrets
         args: ["--baseline", ".secrets.baseline"]
@@ -28,21 +28,21 @@ repos:
 
   # Shell script linting
   - repo: https://github.com/koalaman/shellcheck-precommit
-    rev: v0.10.0
+    rev: 99470f5e12208ff0fb17ab81c3c494f7620a1d8d # v0.11.0
     hooks:
       - id: shellcheck
         args: ["-x", "--severity=warning"]
 
   # Markdown linting
   - repo: https://github.com/igorshubovych/markdownlint-cli
-    rev: v0.47.0 # Updated to latest
+    rev: e72a3ca1632f0b11a07d171449fe447a7ff6795e # v0.48.0
     hooks:
       - id: markdownlint
         args: ["--fix"]
 
   # YAML linting
   - repo: https://github.com/adrienverge/yamllint
-    rev: v1.38.0
+    rev: cba56bcde1fdd01c1deb3f945e69764c291a6530 # v1.38.0
     hooks:
       - id: yamllint
         args:
@@ -62,7 +62,7 @@ repos:
 
   # OpenTofu/Terraform formatting (since you use tofu)
   - repo: https://github.com/antonbabenko/pre-commit-terraform
-    rev: v1.105.0
+    rev: d0e12caebb2ab0ee8bf98181c8bfe9702bca103d # v1.105.0
     hooks:
       - id: terraform_fmt
       - id: terraform_validate
@@ -86,7 +86,7 @@ repos:
 
   # Prevent large files and binaries
   - repo: https://github.com/Lucas-C/pre-commit-hooks
-    rev: v1.5.6 # Updated to latest
+    rev: ad1b27d73581aa16cca06fc4a0761fc563ffe8e8 # v1.5.6
     hooks:
       - id: forbid-tabs
         exclude_types: [python, javascript, dtd, markdown, makefile, xml]
@@ -96,7 +96,7 @@ repos:
 
   # JSON/YAML formatting
   - repo: https://github.com/pre-commit/mirrors-prettier
-    rev: v4.0.0-alpha.8
+    rev: ffb6a759a979008c0e6dff86e39f4745a2d9eac4 # v3.1.0
     hooks:
       - id: prettier
         types_or: [json, yaml, markdown]
@@ -104,6 +104,6 @@ repos:
 
   # Check for merge conflicts
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v6.0.0
+    rev: 3e8a8703264a2f4a69428a0aa4dcb512790b2c8c # v6.0.0
     hooks:
       - id: check-merge-conflict
